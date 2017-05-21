@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+/* Basic Styles */
+html, body {
+  margin: 0;
+  color: #000;
+  background: #eee;
+  font-family: 'Source Sans Pro', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 1em 2em 1em 2em;
+}
+
+/* ================================
+========== Header Styles ==========
+================================ */
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+header > nav {
+  flex: 1 0 auto;
+}
+
+.header-icon {
+  grid-row: 1;
+  font-size: 1.25em;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.grid-wrapper {
+  flex: 1;
+  display: inline-grid;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.icon-wrapper > a + a {
+  padding-left: 1em;
+}
+
+.top-bar > nav{
+  flex: 3;
+}
+
+.logo-wrapper {
+  text-align: center;
+  padding: 1em 2em 1em 2em;
+  background: #000;
+  width: 100%;
+}
+
+/* Nav Menu Styles */
+.origin-nav { list-style: none; font-weight: bold; }
+.origin-nav li a { text-decoration: none; }
+
+/* Main Menu */
+.top-nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.top-nav > li {
+  display: block;
+  flex: 1 1 auto;
+  height: 100%;
+  position: relative;
+}
+
+.top-nav li:hover > .sub-menu {
+  display: block;
+}
+
+.top-nav > li > a {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+  vertical-align: middle;
+}
+
+.sub-menu {
+  position: absolute;
+  list-style: inside none;
+  padding-left: 0;
+  display: none;
+  width: 100%;
+}
+
+.sub-menu > li {
+  display: flex;
+  width: 100%;
+}
+
+.sub-menu > li > a {
+  padding: 0.5em;
+}
+
+
+/* Footer Styles*/
+footer {
+  display: flex;
+  flex-direction: row;
+}
+
+footer .footer-wrapper { flex-grow: 1 };
+
+/* Footer Menu */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em 1em 2em;
+  list-style: none;
+  margin: 0;
+}
+
+.footer-nav li a {
+  padding-left: 0.5em;
+}
+
+/* Footer Styles */
+.footer-text {
+  padding: 1em 2em 1em 2em;
+}
