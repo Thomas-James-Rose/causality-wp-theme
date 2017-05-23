@@ -20,9 +20,8 @@ endif;
 <body <?php body_class($custom_class); // call the WP function to create a class for each body on each page ?>>
 	<header>
 		<div class="top-bar">
-			<div class="grid-wrapper secondary-color">
-				<div class="icon-wrapper">
-					<!-- use PHP to add options for these and detect if they have been set to determine what renders on the page -->
+			<div class="icon-outer-wrapper secondary-color">
+				<div class="icon-inner-wrapper">
 					<?php
 						if(get_theme_mod('facebook_link') != ''):
 							echo '<a class="header-icon nav-text" href="' . get_theme_mod('facebook_link') . '"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>';

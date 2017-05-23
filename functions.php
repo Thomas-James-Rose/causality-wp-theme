@@ -21,8 +21,6 @@ function origin_theme_setup() {
 
 	// theme support
 	add_theme_support('menus');
-	add_theme_support('custom_background'); // <-- can probably be deleted
-	add_theme_support('custom-header');
 
 	// theme nav menu locations
 	register_nav_menu('primary_menu', 'Main Menu');
@@ -33,66 +31,110 @@ add_action('init', 'origin_theme_setup'); // call the theme setup function when 
 
 // set up the customize register
 function origin_customize_register( $wp_customize ) {
-	$wp_customize->remove_section('colors'); // remove the pre-existing color customization section
+
+	// function for adding an array of the settings to a section in the theme customizer
+	function add_settings_to_sections($section, $settings, $wp_customize) {
+		for ($i = 0; $i < count($settings); $i++) {
+			$wp_customize->add_setting( $settings[$i]->id , array(
+				'default'   => $settings[$i]->default_val,
+				'transport' => 'refresh',
+			) );
+
+			if ($settings[$i]->type == 'color') {
+				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
+					'label'      => __( $settings[$i]->label, 'origin' ),
+					'section'    => $section,
+					'settings'   => $settings[$i]->id,
+					'priority'	 => $i*1,
+				) ) );
+			} else {
+				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
+					'label'      => __( $settings[$i]->label, 'origin' ),
+					'type'			 => $settings[$i]->type,
+					'section'    => $section,
+					'settings'   => $settings[$i]->id,
+					'priority'	 => $i*1,
+				) ) );
+			}
+		}
+	}
 
 	// color customization options
-	$wp_customize->add_section( 'color_scheme' , array( // first arg is section_id
+	$wp_customize->add_section( 'color_scheme' , array(
 		'title'      => __( 'Color Scheme', 'origin' ),
 		'priority'   => 30,
 	) );
 
 	$color_options = array(
-		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'default_val' => '#dd3333'],
-		(object)['id' => 'secondary_color', 'label' => 'Secondary Color', 'default_val' => '#000000'],
-		(object)['id' => 'tertiary_color', 'label' => 'Accent Color', 'default_val' => '#dd9933'],
-		(object)['id' => 'header_footer_text_color', 'label' => 'Header/Footer Text Color', 'default_val' => '#000000'],
-		(object)['id' => 'nav_text_color', 'label' => 'Main Navigation Text Color', 'default_val' => '#ffffff'],
+		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'type' => 'color', 'default_val' => '#dd3333'],
+		(object)['id' => 'secondary_color', 'label' => 'Secondary Color', 'type' => 'color', 'default_val' => '#000000'],
+		(object)['id' => 'tertiary_color', 'label' => 'Accent Color', 'type' => 'color', 'default_val' => '#dd9933'],
+		(object)['id' => 'header_footer_text_color', 'label' => 'Header/Footer Text Color', 'type' => 'color', 'default_val' => '#000000'],
+		(object)['id' => 'nav_text_color', 'label' => 'Main Navigation Text Color', 'type' => 'color', 'default_val' => '#ffffff'],
 	);
 
-	for ($i = 0; $i < count($color_options); $i++) {
-		$wp_customize->add_setting( $color_options[$i]->id , array(
-			'default'   => $color_options[$i]->default_val,
-			'transport' => 'refresh',
-		));
-
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $color_options[$i]->id.'_ctrl', array( // first arg is control_id
-			'label'      => __( $color_options[$i]->label, 'origin' ),
-			'section'    => 'color_scheme',
-			'settings'   => $color_options[$i]->id,
-			'priority'	 => $i*1,
-		) ) );
-	}
+	add_settings_to_sections('color_scheme', $color_options, $wp_customize);
 
 	// social media options
-	$wp_customize->add_section( 'social_media' , array( // first arg is section_id
+	$wp_customize->add_section( 'social_media' , array(
 		'title'      => __( 'Social Media Links', 'origin' ),
 		'priority'   => 40,
 	) );
 
 	$social_options = array(
-		(object)['id' => 'facebook_link', 'label' => 'Facebook', 'default_val' => ''],
-		(object)['id' => 'twitter_link', 'label' => 'Twitter', 'default_val' => ''],
-		(object)['id' => 'instagram_link', 'label' => 'Instagram', 'default_val' => ''],
-		(object)['id' => 'linkedin_link', 'label' => 'Linkedin', 'default_val' => ''],
+		(object)['id' => 'facebook_link', 'label' => 'Facebook', 'type' => 'text', 'default_val' => ''],
+		(object)['id' => 'twitter_link', 'label' => 'Twitter', 'type' => 'text', 'default_val' => ''],
+		(object)['id' => 'instagram_link', 'label' => 'Instagram', 'type' => 'text', 'default_val' => ''],
+		(object)['id' => 'linkedin_link', 'label' => 'Linkedin', 'type' => 'text', 'default_val' => ''],
 	);
 
-	for ($i = 0; $i < count($social_options); $i++) {
-		$wp_customize->add_setting( $social_options[$i]->id , array(
-			'default'   => $social_options[$i]->default_val,
-			'transport' => 'refresh',
-		));
+	add_settings_to_sections('social_media', $social_options, $wp_customize);
 
-		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $social_options[$i]->id.'_ctrl', array( // first arg is control_id
-			'label'      => __( $social_options[$i]->label, 'origin' ),
-			'type'			 => 'text',
-			'section'    => 'social_media',
-			'settings'   => $social_options[$i]->id,
-			'priority'	 => $i*1,
-		) ) );
+	// footer options
+	$wp_customize->add_section( 'footer_options' , array( // first arg is section_id
+		'title'      => __( 'Footer Options', 'origin' ),
+		'priority'   => 65,
+	) );
+
+	$footer_options = array();
+	$boxCount = 3;
+	for ($i = 0; $i < $boxCount; $i++) {
+		$footer_options[$i] = (object)['id' => 'footer_box_'.($i+1), 'label' => 'Footer Box '.($i+1), 'type' => 'textarea', 'default_val' => ''];
 	}
-	//ChromePhp::log(get_theme_mod('facebook_link'));
+
+	add_settings_to_sections('footer_options', $footer_options, $wp_customize);
+
+	// --- dynamic theme customizer code --- //
+	/*$wp_customize->add_setting( 'footer_boxes_num' , array( // add code to refresh customize panel when this option is modified
+		'default'   => 3,
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'footer_boxes_num_ctrl', array(
+		'label'      => __( 'Number of Footer Boxes', 'origin' ),
+		'type'			 => 'number',
+		'section'    => 'footer_options',
+		'settings'   => 'footer_boxes_num',
+		'priority'	 => 1,
+	) ) );*/
+
+	//ChromePhp::log('footer_boxes_num = '.get_theme_mod('footer_boxes_num'));
+	// --- end --- //
 }
 add_action( 'customize_register', 'origin_customize_register' );
+
+function origin_customizer_update()
+{
+	wp_enqueue_script(
+		  'origin_themecustomizer', // give the script and ID
+			get_template_directory_uri().'/js/theme-customizer.js', // point to file
+		  array( 'jquery','customize-preview' ),	// define dependencies
+		  '1.0.0',						// define a version (optional)
+		  true					// put script in footer?
+	);
+}
+//add_action( 'customize_preview_init', 'origin_customizer_update' );
+
 
 // add customizable css to page header
 function origin_customize_css() // add the classes in the style tag to html elements to apply the custom colors
@@ -104,6 +146,7 @@ function origin_customize_css() // add the classes in the style tag to html elem
 						 .secondary-color { background-color: <?php echo get_theme_mod('secondary_color'); ?>; }
 						 .accent-color { background-color: <?php echo get_theme_mod('tertiary_color'); ?>; }
 						 .nav-text { color: <?php echo get_theme_mod('nav_text_color'); ?>; }
+						 .header-icon:hover { color: <?php echo get_theme_mod('tertiary_color'); ?>; }
 
 						 /* Header and Footer */
 						 header, footer { color: <?php echo get_theme_mod('header_footer_text_color'); ?>; }
