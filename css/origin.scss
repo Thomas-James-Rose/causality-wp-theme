@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import "customize";
+
+html, body {
+  margin: 0;
+  color: #111;
+  background: #eee;
+  font-family: 'Source Sans Pro', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Migrated customization css from functions.php
+.primary-color { background: $scss-primary-color; }
+.secondary-color { background-color: $scss-secondary-color; }
+.accent-color { background-color: $scss-accent-color; }
+.nav-text { color: $scss-nav-text-color; }
+.header-icon:hover { color: $scss-accent-color; }
+header, footer { color: $scss-header-footer-text-color; }
+.top-nav > li > a {
+  color: $scss-nav-text-color;
+  background: $scss-secondary-color;
+  border-bottom: solid 0.3em $scss-secondary-color;
+}
+.top-nav > li > a:hover { border-bottom: solid 0.3em $scss-accent-color;}
+.top-nav > .current_page_item > a { border-bottom: solid 0.3em $scss-accent-color;}
+.top-nav > li > .sub-menu > li > a {
+  color: $scss-nav-text-color;
+  background: $scss-secondary-color;
+  border-left: solid 0.2em $scss-secondary-color;
+}
+.top-nav > li > .sub-menu > li > a:hover { border-left: solid 0.2em $scss-accent-color; }
+.top-nav > li > .sub-menu > .current_page_item > a { border-left: solid 0.2em $scss-accent-color; }
+.footer-nav > li > a {
+  color: $scss-header-footer-text-color;
+  border-left: solid 0.1em $scss-secondary-color;
+}
+.footer-nav > li > a:hover { border-left: solid 0.1em $scss-accent-color; }
+.footer-nav > li > a:hover { color: $scss-accent-color; }
+// end of migrated customization css from functions.php
+
+main {
+  flex: 1 0 auto;
+  padding: 1em 2em 1em 2em;
+}
+
+.origin-nav {
+  list-style: none;
+  font-weight: bold;
+  li a { text-decoration: none; }
+}
+
+@import "header";
+@import "footer";
+@import "blog";

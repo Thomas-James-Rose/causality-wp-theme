@@ -135,47 +135,8 @@ function origin_customizer_update()
 }
 //add_action( 'customize_preview_init', 'origin_customizer_update' );
 
-
-// add customizable css to page header
-function origin_customize_css() // add the classes in the style tag to html elements to apply the custom colors
-{
-    ?>
-         <style type="text/css">
-				 		 /* Color Classes */
-             .primary-color { background-color: <?php echo get_theme_mod('primary_color'); ?>; }
-						 .secondary-color { background-color: <?php echo get_theme_mod('secondary_color'); ?>; }
-						 .accent-color { background-color: <?php echo get_theme_mod('tertiary_color'); ?>; }
-						 .nav-text { color: <?php echo get_theme_mod('nav_text_color'); ?>; }
-						 .header-icon:hover { color: <?php echo get_theme_mod('tertiary_color'); ?>; }
-
-						 /* Header and Footer */
-						 header, footer { color: <?php echo get_theme_mod('header_footer_text_color'); ?>; }
-
-						 /* Top Nav */
-						 /*.top-nav { border-left: solid 0.1em <?php echo get_theme_mod('tertiary_color'); ?>; }*/
-						 .top-nav > li > a {
-						 	 color: <?php echo get_theme_mod('nav_text_color'); ?>;
-							 background: <?php echo get_theme_mod('secondary_color'); ?>;
-							 border-bottom: solid 0.3em <?php echo get_theme_mod('secondary_color'); ?>;
-						 }
-						 .top-nav > li > a:hover { border-bottom: solid 0.3em <?php echo get_theme_mod('tertiary_color'); ?>;}
-						 .top-nav > .current_page_item > a { border-bottom: solid 0.3em <?php echo get_theme_mod('tertiary_color'); ?>;}
-						 .top-nav > li > .sub-menu > li > a {
-							 color: <?php echo get_theme_mod('nav_text_color'); ?>;
-							 background: <?php echo get_theme_mod('secondary_color'); ?>;
-							 border-left: solid 0.2em <?php echo get_theme_mod('secondary_color'); ?>;
-						 }
-						 .top-nav > li > .sub-menu > li > a:hover { border-left: solid 0.2em <?php echo get_theme_mod('tertiary_color'); ?>; }
-						 .top-nav > li > .sub-menu > .current_page_item > a { border-left: solid 0.2em <?php echo get_theme_mod('tertiary_color'); ?>; }
-
-						 /* Footer Nav */
-						 .footer-nav > li > a {
-							 color: <?php echo get_theme_mod('header_footer_text_color'); ?>;
-							 border-left: solid 0.1em <?php echo get_theme_mod('secondary_color'); ?>;
-						 }
-						 .footer-nav > li > a:hover { border-left: solid 0.1em <?php echo get_theme_mod('tertiary_color'); ?>;}
-						 .footer-nav > li > a:hover { color: <?php echo get_theme_mod('tertiary_color'); ?>;}
-         </style>
-    <?php
+function set_excerpt_length() {
+	return 30;
 }
-add_action( 'wp_head', 'origin_customize_css');
+
+add_filter('excerpt_length', 'set_excerpt_length');

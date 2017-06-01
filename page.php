@@ -1,10 +1,3 @@
-<?php
-/* --
-BEGINNER DEV NOTES: This is an example of a custom page template that can be selected
-in the WordPress back-end.
--- */
-?>
-
 <?php get_header(); // from header.php ?>
 
 	<main>
