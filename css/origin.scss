@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import "customize";
 
 html, body {
@@ -11,44 +11,94 @@ html, body {
   flex-direction: column;
 }
 
-// Migrated customization css from functions.php
-.primary-color { background: $scss-primary-color; }
-.secondary-color { background-color: $scss-secondary-color; }
-.accent-color { background-color: $scss-accent-color; }
-.nav-text { color: $scss-nav-text-color; }
-.header-icon:hover { color: $scss-accent-color; }
+p { text-align: justify; }
+
 header, footer { color: $scss-header-footer-text-color; }
-.top-nav > li > a {
-  color: $scss-nav-text-color;
-  background: $scss-secondary-color;
-  border-bottom: solid 0.3em $scss-secondary-color;
+
+.origin-nav {
+  list-style: none;
+  font-weight: bold;
+  li a { text-decoration: none; }
 }
-.top-nav > li > a:hover { border-bottom: solid 0.3em $scss-accent-color;}
-.top-nav > .current_page_item > a { border-bottom: solid 0.3em $scss-accent-color;}
-.top-nav > li > .sub-menu > li > a {
-  color: $scss-nav-text-color;
-  background: $scss-secondary-color;
-  border-left: solid 0.2em $scss-secondary-color;
-}
-.top-nav > li > .sub-menu > li > a:hover { border-left: solid 0.2em $scss-accent-color; }
-.top-nav > li > .sub-menu > .current_page_item > a { border-left: solid 0.2em $scss-accent-color; }
-.footer-nav > li > a {
-  color: $scss-header-footer-text-color;
-  border-left: solid 0.1em $scss-secondary-color;
-}
-.footer-nav > li > a:hover { border-left: solid 0.1em $scss-accent-color; }
-.footer-nav > li > a:hover { color: $scss-accent-color; }
-// end of migrated customization css from functions.php
 
 main {
   flex: 1 0 auto;
   padding: 1em 2em 1em 2em;
 }
 
-.origin-nav {
+.home-posts {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-feed {
+  width: 67%;
+  padding-right: 1.5em;
+}
+
+.sidebar {
+  height: 33%;
+  padding-left: 1.5em;
+}
+
+.post-title:hover {
+  color: $scss-accent-color;
+}
+
+.post-title > h2 {
+  margin: 1em 0 0.2em 0;
+}
+
+.post-date {
+  margin: 0 0 0.5em 0;
+}
+
+ul.post-categories {
   list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+ul.post-categories > li + li {
+  margin-left: 0.5em;
+}
+
+ul.post-categories > li + li:before {
+  content: "//";
+  margin-right: 0.5em;
+}
+
+ul.post-categories li a:hover {
+  color: $scss-accent-color;
+}
+
+.post-thumbnail {
+  //margin: auto;
+  width: 50%;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.post-category-menu {
+  color: #111;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.post-category-menu > a {
+  color: #111;
+  text-decoration: none;
   font-weight: bold;
-  li a { text-decoration: none; }
+}
+
+.post-category-menu > a:hover {
+  color: $scss-accent-color;
 }
 
 @import "header";

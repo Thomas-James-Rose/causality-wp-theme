@@ -3,11 +3,6 @@
 // php debugger for Google Chrome
 include 'chromephp/ChromePhp.php';
 
-/* --
-BEGINNER DEV NOTES: functions.php manages the backend of the theme and is commonly used to hook into the WordPress core.
-It can be used to add custom CSS and JS to the theme as well as to enable theme support and register nav menus etc.
--- */
-
 // enqueue custom scripts and styles
 function origin_scripts_enqueue() {
 	wp_enqueue_style('themestyles', get_template_directory_uri().'/css/origin.css', array(), '1.0.0', 'all'); // enqueue custom CSS
@@ -21,6 +16,7 @@ function origin_theme_setup() {
 
 	// theme support
 	add_theme_support('menus');
+	add_theme_support('post-thumbnails');
 
 	// theme nav menu locations
 	register_nav_menu('primary_menu', 'Main Menu');

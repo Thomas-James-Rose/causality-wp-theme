@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 html, body {
   margin: 0;
   color: #111;
@@ -8,59 +8,11 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-.primary-color {
-  background: #d33;
-}
-.secondary-color {
-  background-color: #000;
-}
-.accent-color {
-  background-color: #d93;
-}
-.nav-text {
-  color: #fff;
-}
-.header-icon:hover {
-  color: #d93;
+p {
+  text-align: justify;
 }
 header, footer {
   color: #000;
-}
-.top-nav > li > a {
-  color: #fff;
-  background: #000;
-  border-bottom: solid 0.3em #000;
-}
-.top-nav > li > a:hover {
-  border-bottom: solid 0.3em #d93;
-}
-.top-nav > .current_page_item > a {
-  border-bottom: solid 0.3em #d93;
-}
-.top-nav > li > .sub-menu > li > a {
-  color: #fff;
-  background: #000;
-  border-left: solid 0.2em #000;
-}
-.top-nav > li > .sub-menu > li > a:hover {
-  border-left: solid 0.2em #d93;
-}
-.top-nav > li > .sub-menu > .current_page_item > a {
-  border-left: solid 0.2em #d93;
-}
-.footer-nav > li > a {
-  color: #000;
-  border-left: solid 0.1em #000;
-}
-.footer-nav > li > a:hover {
-  border-left: solid 0.1em #d93;
-}
-.footer-nav > li > a:hover {
-  color: #d93;
-}
-main {
-  flex: 1 0 auto;
-  padding: 1em 2em 1em 2em;
 }
 .origin-nav {
   list-style: none;
@@ -68,6 +20,69 @@ main {
 }
 .origin-nav li a {
   text-decoration: none;
+}
+main {
+  flex: 1 0 auto;
+  padding: 1em 2em 1em 2em;
+}
+.home-posts {
+  display: flex;
+  flex-direction: row;
+}
+.post-feed {
+  width: 67%;
+  padding-right: 1.5em;
+}
+.sidebar {
+  height: 33%;
+  padding-left: 1.5em;
+}
+.post-title:hover {
+  color: #d93;
+}
+.post-title > h2 {
+  margin: 1em 0 0.2em 0;
+}
+.post-date {
+  margin: 0 0 0.5em 0;
+}
+ul.post-categories {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+ul.post-categories > li + li {
+  margin-left: 0.5em;
+}
+ul.post-categories > li + li:before {
+  content: "//";
+  margin-right: 0.5em;
+}
+ul.post-categories li a:hover {
+  color: #d93;
+}
+.post-thumbnail {
+  width: 50%;
+}
+.post-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+.post-category-menu {
+  color: #111;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+.post-category-menu > a {
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+}
+.post-category-menu > a:hover {
+  color: #d93;
 }
 header {
   display: flex;
@@ -86,10 +101,15 @@ header > nav {
   display: inline-grid;
   text-align: center;
   padding: 0.5em;
+  background: #000;
 }
 .header-icon {
+  color: #fff;
   grid-row: 1;
   font-size: 1.25em;
+}
+.header-icon:hover {
+  color: #d93;
 }
 .header-icon + .header-icon {
   margin-left: 1em;
@@ -115,11 +135,6 @@ header > nav {
 .top-nav li:hover > .sub-menu {
   display: block;
 }
-.top-nav > li > a {
-  display: block;
-  text-align: center;
-  padding: 0.5em;
-}
 .sub-menu {
   position: absolute;
   list-style: inside none;
@@ -134,13 +149,40 @@ header > nav {
 .sub-menu > li > a {
   padding: 0.5em;
 }
+.top-nav > li > a {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+  color: #fff;
+  background: #000;
+  border-bottom: solid 0.3em #000;
+}
+.top-nav > li > a:hover {
+  border-bottom: solid 0.3em #d93;
+}
+.top-nav > .current_page_item > a {
+  border-bottom: solid 0.3em #d93;
+}
+.top-nav > li > .sub-menu > li > a {
+  color: #fff;
+  background: #000;
+  border-left: solid 0.2em #000;
+}
+.top-nav > li > .sub-menu > li > a:hover {
+  border-left: solid 0.2em #d93;
+}
+.top-nav > li > .sub-menu > .current_page_item > a {
+  border-left: solid 0.2em #d93;
+}
 .logo-wrapper {
+  background: #d33;
   text-align: center;
   padding: 1em 2em 1em 2em;
 }
 footer {
   display: flex;
   flex-direction: row;
+  background: #d33;
 }
 footer .footer-wrapper {
   flex-grow: 1;
@@ -155,6 +197,16 @@ footer .footer-wrapper {
 }
 .footer-nav li a {
   padding-left: 0.5em;
+}
+.footer-nav > li > a {
+  color: #000;
+  border-left: solid 0.1em #000;
+}
+.footer-nav > li > a:hover {
+  border-left: solid 0.1em #d93;
+}
+.footer-nav > li > a:hover {
+  color: #d93;
 }
 .footer-text {
   padding: 0em 2em 1em 2em;

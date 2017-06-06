@@ -1,11 +1,4 @@
-<?php
-/* --
-BEGINNER DEV NOTES: footer.php is used to generate the footer of each page of the WP site.
--- */
-?>
-
 <footer class="primary-color">
-	<!-- add some PHP to only render this when set -->
 	<?php
 	if (has_nav_menu('footer_menu')):
 		echo '<div class="footer-wrapper">';
@@ -13,6 +6,7 @@ BEGINNER DEV NOTES: footer.php is used to generate the footer of each page of th
 		echo '</div>';
 	endif;
 
+	// BUG: As soon as code hits the first empty text box the loop will stop
 	for ($i = 1; get_theme_mod('footer_box_' . $i) != null; $i++) {
 		echo '<div class="footer-wrapper">';
 		echo '<p class="footer-text">' . get_theme_mod('footer_box_' . $i) . '</p>';
