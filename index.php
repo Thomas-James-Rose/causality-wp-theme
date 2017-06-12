@@ -7,7 +7,7 @@
 		// Main Post Loop - retrieves the posts of the WordPress site */
 		if ( have_posts() ):
 			while ( have_posts() ) : the_post(); ?>
-				<div class="blog-post-extract">
+				<div class="blog-post">
 					<a class="post-title" href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
 					<p class="post-date"><?php the_time('j F, Y'); ?></p>
 					<?php the_category(); ?>
@@ -21,15 +21,11 @@
 		?>
 	</section>
 	<section class="sidebar">
-		<h2>Post Categories</h2>
-		<ul class="post-category-menu">
 		<?php
-		$category = get_categories();
-		foreach ($category as $c) { ?>
-			<a href="<?php get_category_link($c->term_id); ?>"><li><?php echo $c->name; ?></li></a> <?php
-		}
+		if(is_active_sidebar('blog_sidebar')) :
+			dynamic_sidebar('blog_sidebar');
+		endif;
 		?>
-		</ul>
 	</section>
 </main>
 

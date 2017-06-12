@@ -1,4 +1,4 @@
-<footer class="primary-color">
+<footer class="origin-footer">
 	<?php
 	if (has_nav_menu('footer_menu')):
 		echo '<div class="footer-wrapper">';

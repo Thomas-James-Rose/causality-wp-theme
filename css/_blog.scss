@@ -1,4 +1,140 @@
-.blog-post-extract a {
+// Homepage Post Feed Wrappers
+.home-posts {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-feed {
+  width: 67%;
+  padding-right: 1.5em;
+}
+
+.sidebar {
+  height: 33%;
+  padding-left: 1.5em;
+}
+
+// Post Styles
+.blog-post {
+  // Anchor Tags
+  a {
+    color: #111;
+    text-decoration: none;
+  }
+
+  // Title
+  h2.post-title{
+    color: #111;
+    margin: 1em 0 0.2em 0;
+  }
+
+  a.post-title{
+    &:hover {
+      color: $scss-accent-color;
+    }
+
+    > h2 {
+      margin: 1em 0 0.2em 0;
+    }
+  }
+
+  // Date
+  .post-date {
+    margin: 0 0 0.5em 0;
+  }
+
+  // Category List
+  ul.post-categories {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+
+    > li + li {
+      margin-left: 0.5em;
+    }
+
+    > li + li:before {
+      content: "//";
+      margin-right: 0.5em;
+    }
+
+    li a:hover {
+      color: $scss-accent-color;
+    }
+  }
+
+  // Featured Image
+  .post-thumbnail {
+    //margin: auto;
+    width: 50%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Sidebar Post Categories
+.sidebar .widget ul {
   color: #111;
+  list-style: none;
   text-decoration: none;
+  padding: 0;
+
+  > li {
+    > a {
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        color: $scss-accent-color;
+      }
+    }
+
+    > .post-date:before {
+      content: " - ";
+    }
+  }
+}
+
+// Comment Styles
+.comment {
+  $comment-padding: 0.5em;
+  max-width: 720px;
+  list-style: none;
+  border: solid #111 1px;
+
+  .comment-meta {
+    background: $scss-primary-color;
+    padding: $comment-padding;
+
+    .comment-author {
+      display: inline-block;
+    }
+
+    .comment-metadata {
+      float: right;
+    }
+
+    .comment-awaiting-moderation {
+      font-style: italic;
+    }
+  }
+
+  .comment-content {
+    padding-left: $comment-padding;
+  }
+
+  .reply {
+    padding: 0 0 $comment-padding $comment-padding;
+    font-weight: bold;
+
+    a:hover {
+      color: $scss-accent-color;
+    }
+  }
 }

@@ -17,7 +17,7 @@ endif;
 ?>
 
 <body <?php body_class($custom_class); // call the WP function to create a class for each body on each page ?>>
-	<header>
+	<header class="origin-header">
 		<div class="top-bar">
 			<div class="icon-outer-wrapper secondary-color">
 				<div class="icon-inner-wrapper">

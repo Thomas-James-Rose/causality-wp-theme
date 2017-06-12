@@ -1,38 +1,73 @@
-header { display: flex; flex-direction: column; }
-header > nav { flex: 1 0 auto; }
+// Header Styles
+.origin-header {
+  display: flex;
+  flex-direction: column;
+}
 .top-bar { width: 100%; display: flex; flex-direction: row; }
 
 // Social Media Icons
-.icon-outer-wrapper { flex: 1; display: inline-grid; text-align: center; padding: 0.5em; background: $scss-secondary-color; }
-.header-icon { color: $scss-nav-text-color; grid-row: 1; font-size: 1.25em; }
-.header-icon:hover { color: $scss-accent-color; }
-.header-icon + .header-icon { margin-left: 1em; }
-
-// Nav (Main Menu)
-.top-bar > nav { flex: 3; }
-.top-nav { flex-grow: 1; display: flex; flex-direction: row; width: 100%; padding: 0; margin: 0; height: 100%; }
-.top-nav > li { display: block; flex: 1 1 auto; height: 100%; position: relative; }
-.top-nav li:hover > .sub-menu { display: block; }
-.sub-menu { position: absolute; list-style: inside none; padding-left: 0; display: none; width: 100%; }
-.sub-menu > li { display: flex; width: 100%; }
-.sub-menu > li > a { padding: 0.5em; }
-.top-nav > li > a {
-  display: block;
+.icon-outer-wrapper {
+  flex: 1;
+  display: inline-grid;
   text-align: center;
   padding: 0.5em;
-  color: $scss-nav-text-color;
   background: $scss-secondary-color;
-  border-bottom: solid 0.3em $scss-secondary-color;
+
+  .header-icon {
+    color: $scss-nav-text-color;
+    grid-row: 1;
+    font-size: 1.25em;
+
+    &:hover { color: $scss-accent-color; }
+    + .header-icon { margin-left: 1em; }
+  }
 }
-.top-nav > li > a:hover { border-bottom: solid 0.3em $scss-accent-color;}
-.top-nav > .current_page_item > a { border-bottom: solid 0.3em $scss-accent-color;}
-.top-nav > li > .sub-menu > li > a {
-  color: $scss-nav-text-color;
-  background: $scss-secondary-color;
-  border-left: solid 0.2em $scss-secondary-color;
+
+// Nav (Main Menu) TODO: Clean this mess!
+.top-bar > nav { flex: 3; }
+.top-nav { // nav menu
+  flex-grow: 1; display: flex; flex-direction: row; width: 100%; padding: 0; margin: 0; height: 100%;
+
+  > li { // menu item
+    display: block; flex: 1 1 auto; height: 100%; position: relative;
+    &:hover > .sub-menu { display: block; }
+
+    > a {
+      display: block;
+      text-align: center;
+      padding: 0.5em;
+      color: $scss-nav-text-color;
+      background: $scss-secondary-color;
+      border-bottom: solid 0.3em $scss-secondary-color;
+
+      &:hover { border-bottom: solid 0.3em $scss-accent-color; }
+    }
+  }
+
+  > .current_page_item > a { // current page
+    border-bottom: solid 0.3em $scss-accent-color;
+  }
+
+  .sub-menu { // child menu
+    position: absolute; list-style: inside none; padding-left: 0; display: none; width: 100%;
+
+    > li { // child menu item
+      display: flex; width: 100%;
+      > a {
+        padding: 0.5em;
+        color: $scss-nav-text-color;
+        background: $scss-secondary-color;
+        border-left: solid 0.2em $scss-secondary-color;
+
+        &:hover { border-left: solid 0.2em $scss-accent-color; }
+      }
+    }
+
+    > .current_page_item > a { // current page
+      border-left: solid 0.2em $scss-accent-color;
+    }
+  }
 }
-.top-nav > li > .sub-menu > li > a:hover { border-left: solid 0.2em $scss-accent-color; }
-.top-nav > li > .sub-menu > .current_page_item > a { border-left: solid 0.2em $scss-accent-color; }
 
 // Logo
 .logo-wrapper {

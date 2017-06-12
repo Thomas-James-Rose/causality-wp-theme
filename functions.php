@@ -136,3 +136,16 @@ function set_excerpt_length() {
 }
 
 add_filter('excerpt_length', 'set_excerpt_length');
+
+function origin_init_widgets() {
+	register_sidebar(array(
+		'name' => 'Blog Sidebar',
+		'id' => 'blog_sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h2>',
+		'after_widget' => '</h2>'
+	));
+}
+
+add_action('widgets_init', 'origin_init_widgets');
