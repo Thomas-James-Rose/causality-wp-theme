@@ -13,8 +13,6 @@ html, body {
 
 p { text-align: justify; }
 
-header, footer { color: $scss-header-footer-text-color; }
-
 .origin-nav {
   list-style: none;
   font-weight: bold;
@@ -23,7 +21,7 @@ header, footer { color: $scss-header-footer-text-color; }
 
 main {
   flex: 1 0 auto;
-  padding: 1em 2em 1em 2em;
+  padding: 2em 2em 1em 2em;
 }
 
 @import "header";

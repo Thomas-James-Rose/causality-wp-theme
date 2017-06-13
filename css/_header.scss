@@ -2,6 +2,7 @@
 .origin-header {
   display: flex;
   flex-direction: column;
+  border-bottom: solid 2px #111;
 }
 .top-bar { width: 100%; display: flex; flex-direction: row; }
 
@@ -10,11 +11,11 @@
   flex: 1;
   display: inline-grid;
   text-align: center;
-  padding: 0.5em;
-  background: $scss-secondary-color;
+  padding: 0.48em;
+  background: $scss-primary-color;
 
   .header-icon {
-    color: $scss-nav-text-color;
+    color: $scss-primary-text-color;
     grid-row: 1;
     font-size: 1.25em;
 
@@ -36,11 +37,15 @@
       display: block;
       text-align: center;
       padding: 0.5em;
-      color: $scss-nav-text-color;
-      background: $scss-secondary-color;
-      border-bottom: solid 0.3em $scss-secondary-color;
+      color: $scss-primary-text-color;
+      background: $scss-primary-color;
+      border-left: solid 1px #111;
+      border-bottom: solid 0.3em $scss-primary-color;
 
-      &:hover { border-bottom: solid 0.3em $scss-accent-color; }
+      &:hover {
+        color: $scss-accent-color;
+        border-bottom: solid 0.3em $scss-accent-color;
+      }
     }
   }
 
@@ -55,11 +60,14 @@
       display: flex; width: 100%;
       > a {
         padding: 0.5em;
-        color: $scss-nav-text-color;
-        background: $scss-secondary-color;
-        border-left: solid 0.2em $scss-secondary-color;
-
-        &:hover { border-left: solid 0.2em $scss-accent-color; }
+        color: $scss-primary-text-color;
+        background: $scss-primary-color;
+        border-top: solid 1px #111;
+        border-left: solid 0.2em $scss-primary-color;
+        &:hover {
+          color: $scss-accent-color;
+          border-left: solid 0.2em $scss-accent-color;
+        }
       }
     }
 
@@ -71,7 +79,7 @@
 
 // Logo
 .logo-wrapper {
-  background: $scss-primary-color;
+  //background: $scss-primary-color;
   text-align: center;
   padding: 1em 2em 1em 2em;
 }

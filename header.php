@@ -22,18 +22,18 @@ endif;
 			<div class="icon-outer-wrapper secondary-color">
 				<div class="icon-inner-wrapper">
 					<?php
-						if(get_theme_mod('facebook_link') != ''):
-							echo '<a class="header-icon" href="' . get_theme_mod('facebook_link') . '"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>';
-						endif;
-						if(get_theme_mod('twitter_link') != ''):
-							echo '<a class="header-icon" href="' . get_theme_mod('twitter_link') . '"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
-						endif;
-						if(get_theme_mod('instagram_link') != ''):
-							echo '<a class="header-icon" href="' . get_theme_mod('instagram_link') . '"><i class="fa fa-instagram" aria-hidden="true"></i></a>';
-						endif;
-						if(get_theme_mod('linkedin_link') != ''):
-							echo '<a class="header-icon" href="' . get_theme_mod('linkedin_link') . '"><i class="fa fa-linkedin" aria-hidden="true"></i></a>';
-						endif;
+					if(get_theme_mod('facebook_link') != ''): ?>
+						<a class="header-icon" href="<?php get_theme_mod('facebook_link'); ?>"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+					<?php endif;
+					if(get_theme_mod('twitter_link') != ''): ?>
+						<a class="header-icon" href="<?php get_theme_mod('twitter_link'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+					<?php endif;
+					if(get_theme_mod('instagram_link') != ''): ?>
+						<a class="header-icon" href="<?php get_theme_mod('instagram_link'); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<?php endif;
+					if(get_theme_mod('linkedin_link') != ''): ?>
+						<a class="header-icon" href="<?php get_theme_mod('linkedin_link'); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+					<?php endif;
 					?>
 				</div>
 			</div>

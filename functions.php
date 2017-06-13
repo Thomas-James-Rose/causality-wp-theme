@@ -62,11 +62,9 @@ function origin_customize_register( $wp_customize ) {
 	) );
 
 	$color_options = array(
-		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'type' => 'color', 'default_val' => '#dd3333'],
-		(object)['id' => 'secondary_color', 'label' => 'Secondary Color', 'type' => 'color', 'default_val' => '#000000'],
-		(object)['id' => 'tertiary_color', 'label' => 'Accent Color', 'type' => 'color', 'default_val' => '#dd9933'],
-		(object)['id' => 'header_footer_text_color', 'label' => 'Header/Footer Text Color', 'type' => 'color', 'default_val' => '#000000'],
-		(object)['id' => 'nav_text_color', 'label' => 'Main Navigation Text Color', 'type' => 'color', 'default_val' => '#ffffff'],
+		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'type' => 'color', 'default_val' => '#3f51b4'],
+		(object)['id' => 'accent_color', 'label' => 'Accent Color', 'type' => 'color', 'default_val' => '#fe5252'],
+		(object)['id' => 'primary_text_color', 'label' => 'Complementary Text Color', 'type' => 'color', 'default_val' => '#ffffff']
 	);
 
 	add_settings_to_sections('color_scheme', $color_options, $wp_customize);
@@ -99,6 +97,18 @@ function origin_customize_register( $wp_customize ) {
 	}
 
 	add_settings_to_sections('footer_options', $footer_options, $wp_customize);
+
+	// Developer Options
+	$wp_customize->add_section( 'dev_options' , array(
+		'title'      => __( 'Developer Options', 'origin' ),
+		'priority'   => 99,
+	) );
+
+	$dev_options = array(
+		(object)['id' => 'scss_recompile', 'label' => 'Recompile SCSS on page load?', 'type' => 'checkbox', 'default_val' => ''],
+	);
+
+	add_settings_to_sections('dev_options', $dev_options, $wp_customize);
 
 	// --- dynamic theme customizer code --- //
 	/*$wp_customize->add_setting( 'footer_boxes_num' , array( // add code to refresh customize panel when this option is modified
@@ -142,9 +152,9 @@ function origin_init_widgets() {
 		'name' => 'Blog Sidebar',
 		'id' => 'blog_sidebar',
 		'before_widget' => '<div class="widget">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_widget' => '</h2>'
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3><div class="widget-body">'
 	));
 }
 

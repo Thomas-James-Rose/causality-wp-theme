@@ -5,17 +5,19 @@
 }
 
 .post-feed {
-  width: 67%;
+  width: 75%;
   padding-right: 1.5em;
 }
 
 .sidebar {
-  height: 33%;
+  width: 25%;
   padding-left: 1.5em;
 }
 
 // Post Styles
 .blog-post {
+  margin-bottom: 2em;
+
   // Anchor Tags
   a {
     color: #111;
@@ -23,9 +25,9 @@
   }
 
   // Title
-  h2.post-title{
+  .post-title{
     color: #111;
-    margin: 1em 0 0.2em 0;
+    margin: 0 0 0.2em 0;
   }
 
   a.post-title{
@@ -34,7 +36,7 @@
     }
 
     > h2 {
-      margin: 1em 0 0.2em 0;
+      margin: 0 0 0.2em 0;
     }
   }
 
@@ -77,26 +79,42 @@
   }
 }
 
-// Sidebar Post Categories
-.sidebar .widget ul {
-  color: #111;
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
+// Sidebar
+.sidebar .widget {
+  border: solid 1px #111;
+  margin-bottom: 2em;
 
-  > li {
-    > a {
+  .widget-title {
+    background: $scss-primary-color;
+    color: $scss-primary-text-color;
+    padding: 0.2em 0 0.2em 5%;
+    margin-top: 0;
+  }
+
+  .widget-body {
+    padding: 0 5% 0 5%;
+
+    ul {
       color: #111;
+      list-style: none;
       text-decoration: none;
-      font-weight: bold;
+      padding: 0;
 
-      &:hover {
-        color: $scss-accent-color;
+      li {
+        a {
+          color: #111;
+          text-decoration: none;
+          font-weight: bold;
+
+          &:hover {
+            color: $scss-accent-color;
+          }
+        }
+
+        > .post-date:before {
+          content: " - ";
+        }
       }
-    }
-
-    > .post-date:before {
-      content: " - ";
     }
   }
 }
@@ -106,11 +124,12 @@
   $comment-padding: 0.5em;
   max-width: 720px;
   list-style: none;
-  border: solid #111 1px;
 
   .comment-meta {
     background: $scss-primary-color;
+    color: $scss-primary-text-color;
     padding: $comment-padding;
+    border: solid #111 1px;
 
     .comment-author {
       display: inline-block;
@@ -118,6 +137,8 @@
 
     .comment-metadata {
       float: right;
+      a { color: $scss-primary-text-color; }
+      .comment-edit-link:before { content: " - "; }
     }
 
     .comment-awaiting-moderation {

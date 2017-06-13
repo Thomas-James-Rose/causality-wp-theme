@@ -4,12 +4,32 @@
 function compileSCSS() {
   require 'scssphp/scss.inc.php';
   $scss = new scssc();
+
+  // TODO: modify the below code to pull defaults from functions.php
+  $primary_color_val = get_theme_mod('primary_color');
+  if($primary_color_val == NULL) {
+    ChromePhp::log('No primary color has been set. The default value is being used.');
+    $primary_color_val = '#3f51b4';
+  }
+
+  $accent_color_val = get_theme_mod('accent_color');
+  if($accent_color_val == NULL) {
+    ChromePhp::log('No accent color has been set. The default value is being used.');
+    $accent_color_val = '#fe5252';
+  }
+
+  $primary_text_val = get_theme_mod('primary_text_color');
+  if($primary_text_val == NULL) {
+    ChromePhp::log('No complementary text color has been set. The default value is being used.');
+    $primary_text_val = '#ffffff';
+  }
+
+
+  // generate SCSS
   $sassy_code = '
-   $scss-primary-color: '.get_theme_mod('primary_color').';
-   $scss-secondary-color: '.get_theme_mod('secondary_color').';
-   $scss-accent-color: '.get_theme_mod('tertiary_color').';
-   $scss-nav-text-color: '.get_theme_mod('nav_text_color').';
-   $scss-header-footer-text-color: '.get_theme_mod('header_footer_text_color').';
+   $scss-primary-color: '.$primary_color_val.';
+   $scss-accent-color: '.$accent_color_val.';
+   $scss-primary-text-color: '.$primary_text_val.';
   ';
 
   // open _customize.scss
@@ -17,8 +37,10 @@ function compileSCSS() {
   $handle = fopen($customize_file, 'r') or die('Cannot open file:  '.$customize_file);
   $current_scss = fread($handle,filesize($customize_file)); // current scss code
 
+  ChromePhp::log('SCSS recompile = ' . get_theme_mod('scss_recompile'));
+
   // Check if CSS needs recompiling
-  if($current_scss != $sassy_code) {
+  if($current_scss != $sassy_code || get_theme_mod('scss_recompile') == 1) {
     ChromePhp::log('Customizable options have been modified. Compiling SCSS...');
 
     // write the scss to _customize.scss
