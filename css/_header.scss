@@ -2,9 +2,10 @@
 .origin-header {
   display: flex;
   flex-direction: column;
-  border-bottom: solid 2px #111;
+  background: $scss-primary-color;
+  border-bottom: solid $scss-accent-color;
 }
-.top-bar { width: 100%; display: flex; flex-direction: row; }
+.top-bar { width: 100%; display: flex; flex-direction: row; border-bottom: solid #000; }
 
 // Social Media Icons
 .icon-outer-wrapper {
@@ -12,41 +13,64 @@
   display: inline-grid;
   text-align: center;
   padding: 0.48em;
-  background: $scss-primary-color;
+  background: #fff; // $scss-primary-color;
 
   .header-icon {
-    color: $scss-primary-text-color;
+    color: #000;
     grid-row: 1;
-    font-size: 1.25em;
+    font-size: 2em;
 
-    &:hover { color: $scss-accent-color; }
+    i:hover { color: $scss-accent-color; }
     + .header-icon { margin-left: 1em; }
   }
 }
 
-// Nav (Main Menu) TODO: Clean this mess!
+#facebook-icon i:hover { color: #3B5998; }
+#twitter-icon i:hover { color: #7EC7FA; }
+#instagram-icon i:hover { 
+  color: $scss-accent-color; // fallback
+  background: -webkit-gradient(linear, left top, right bottom, from(#5442D6), color-stop(33%, #D32475), color-stop(66%, #F32D3F), to(#FEC053));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#linkedin-icon i:hover { color: #007BB6; }
+
+// Nav (Main Menu)
 .top-bar > nav { flex: 3; }
 .top-nav { // nav menu
   flex-grow: 1; display: flex; flex-direction: row; width: 100%; padding: 0; margin: 0; height: 100%;
 
   > li { // menu item
-    display: block; flex: 1 1 auto; height: 100%; position: relative;
+    display: inline-grid; flex: 1 1 auto; height: 100%; position: relative; font-size: 1.2em;
     &:hover > .sub-menu { display: block; }
 
     > a {
       display: block;
       text-align: center;
       padding: 0.5em;
-      color: $scss-primary-text-color;
-      background: $scss-primary-color;
-      border-left: solid 1px #111;
-      border-bottom: solid 0.3em $scss-primary-color;
+      color: #000;
+      background: #fff;
+      border-bottom: solid 0.3em #fff;
+    }
 
-      &:hover {
+    &:hover > a {
+        //filter: brightness(90%);
         color: $scss-accent-color;
         border-bottom: solid 0.3em $scss-accent-color;
+
+        &:after {
+          bottom: 0;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0%);
+          content: '';
+          width: 0;
+          height: 0;
+          border-bottom: solid 10px $scss-accent-color;
+          border-left: solid 10px transparent;
+          border-right: solid 10px transparent;
+        }
       }
-    }
   }
 
   > .current_page_item > a { // current page
@@ -54,21 +78,38 @@
   }
 
   .sub-menu { // child menu
-    position: absolute; list-style: inside none; padding-left: 0; display: none; width: 100%;
+    position: absolute; top: 100%; list-style: inside none; padding-left: 0; display: none; width: 100%;
 
     > li { // child menu item
-      display: flex; width: 100%;
+      display: flex; width: 100%; 
       > a {
         padding: 0.5em;
-        color: $scss-primary-text-color;
-        background: $scss-primary-color;
-        border-top: solid 1px #111;
-        border-left: solid 0.2em $scss-primary-color;
+        color: #000;
+        background: #fff; 
+        //border: solid #000;
+        border-left: solid transparent;
+        width: 100%;
+        text-align: center;
+
         &:hover {
           color: $scss-accent-color;
           border-left: solid 0.2em $scss-accent-color;
+
+          &:after {
+            position: absolute;
+            left: 0;
+            transform: translate(0%, 10%);
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: solid 10px $scss-accent-color;
+            border-top: solid 10px transparent;
+            border-bottom: solid 10px transparent;
+          }
         }
       }
+
+      //+ li > a { border-top: none; }
     }
 
     > .current_page_item > a { // current page
@@ -82,4 +123,8 @@
   //background: $scss-primary-color;
   text-align: center;
   padding: 1em 2em 1em 2em;
+}
+
+.header-img {
+  max-width: 600px;
 }

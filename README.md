@@ -1,4 +1,4 @@
-# Origin WP Theme
+# Causality WP Theme
 
 A WordPress theme that offers plenty of customization options and intregrated support for SCSS.
 

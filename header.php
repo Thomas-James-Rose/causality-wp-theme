@@ -23,39 +23,36 @@ endif;
 				<div class="icon-inner-wrapper">
 					<?php
 					if(get_theme_mod('facebook_link') != ''): ?>
-						<a class="header-icon" href="<?php get_theme_mod('facebook_link'); ?>"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+						<a id="facebook-icon" class="header-icon" href="<?php get_theme_mod('facebook_link'); ?>"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
 					<?php endif;
 					if(get_theme_mod('twitter_link') != ''): ?>
-						<a class="header-icon" href="<?php get_theme_mod('twitter_link'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+						<a id="twitter-icon" class="header-icon" href="<?php get_theme_mod('twitter_link'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 					<?php endif;
 					if(get_theme_mod('instagram_link') != ''): ?>
-						<a class="header-icon" href="<?php get_theme_mod('instagram_link'); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+						<a id="instagram-icon" class="header-icon" href="<?php get_theme_mod('instagram_link'); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					<?php endif;
 					if(get_theme_mod('linkedin_link') != ''): ?>
-						<a class="header-icon" href="<?php get_theme_mod('linkedin_link'); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<a id="linkedin-icon" class="header-icon" href="<?php get_theme_mod('linkedin_link'); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 					<?php endif;
 					?>
 				</div>
 			</div>
 			<?php
 			if (has_nav_menu('primary_menu')):
-				wp_nav_menu(array('container' => 'nav', 'menu_class' => 'origin-nav top-nav', 'theme_location' => 'primary-menu'));
+				wp_nav_menu(array('container' => 'nav', 'menu_class' => 'origin-nav top-nav', 'theme_location' => 'primary_menu'));
 			endif;
 			?>
 		</div>
 		<div class="logo-wrapper">
-			<?php if(get_header_textcolor() != 'blank'): // <!-- check this stuff! Still doing anything?
-				echo '<h1 class="custom-header">';
-					bloginfo('name');
-				echo '</h1>';
-			endif; ?>
-			<?php if(get_header_textcolor() != 'blank'):
-				echo '<h3 class="custom-header">';
-					bloginfo('description');
-				echo '</h3>';
-			endif; ?>
-			<?php if(get_header_image() != ''):
-				echo '<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />';
-			endif;?>
+			<?php if(get_header_image() != '') { ?>
+				<img class="header-img" src="<?php header_image(); ?>" alt="" />
+			<?php } else if(get_header_textcolor() != 'blank') { ?>
+				<h1 class="custom-header">
+					<?php bloginfo('name') ?>
+				</h1>
+				<h3 class="custom-header">
+					<?php bloginfo('description') ?>
+				</h3>
+			<?php } ?>
 		</div>
 	</header>

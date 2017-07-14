@@ -2,11 +2,11 @@
 	<?php
 	if (has_nav_menu('footer_menu')):
 		echo '<div class="footer-wrapper">';
-			wp_nav_menu(array('container' => 'nav', 'menu_class' => 'origin-nav footer-nav', 'theme_location' => 'footer-menu'));
+			wp_nav_menu(array('container' => 'nav', 'menu_class' => 'origin-nav footer-nav', 'theme_location' => 'footer_menu'));
 		echo '</div>';
 	endif;
 
-	// BUG: As soon as code hits the first empty text box the loop will stop
+	// TODO: replace with widgets taht have different styles to the sidebar
 	for ($i = 1; get_theme_mod('footer_box_' . $i) != null; $i++) {
 		echo '<div class="footer-wrapper">';
 		echo '<p class="footer-text">' . get_theme_mod('footer_box_' . $i) . '</p>';

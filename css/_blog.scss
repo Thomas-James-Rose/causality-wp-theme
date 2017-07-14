@@ -82,10 +82,14 @@
 // Sidebar
 .sidebar .widget {
   border: solid 1px #111;
+  border-radius: 1em 0 1em 0;
+  overflow: hidden;
   margin-bottom: 2em;
 
   .widget-title {
     background: $scss-primary-color;
+    border-bottom: solid 1px $scss-accent-color;
+    //border-radius: 1em 0 0 0;
     color: $scss-primary-text-color;
     padding: 0.2em 0 0.2em 5%;
     margin-top: 0;

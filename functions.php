@@ -1,32 +1,46 @@
 <?php
 
 // php debugger for Google Chrome
-include 'chromephp/ChromePhp.php';
+//include 'chromephp/ChromePhp.php';
 
 // enqueue custom scripts and styles
-function origin_scripts_enqueue() {
-	wp_enqueue_style('themestyles', get_template_directory_uri().'/css/origin.css', array(), '1.0.0', 'all'); // enqueue custom CSS
-  wp_enqueue_script('themescripts', get_template_directory_uri().'/js/origin.js', array(), '1.0.0', true);  // enqueue custom JS
+function causality_scripts_enqueue() {
+	wp_enqueue_style('themestyles', get_template_directory_uri().'/css/causality.css', array(), '1.0.0', 'all'); // enqueue custom CSS
+  wp_enqueue_script('themescripts', get_template_directory_uri().'/js/causality.js', array(), '1.0.0', true);  // enqueue custom JS
 }
 
-add_action('wp_enqueue_scripts', 'origin_scripts_enqueue'); // add the custom CSS and JS
+add_action('wp_enqueue_scripts', 'causality_scripts_enqueue'); // add the custom CSS and JS
 
 // set up the theme
-function origin_theme_setup() {
+function causality_theme_setup() {
 
 	// theme support
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
+	$header_args = array(
+        'default-text-color' => '000',
+        'width'              => 600,
+        'height'             => 285,
+        'flex-width'         => true,
+        'flex-height'        => true,
+    );
+    add_theme_support( 'custom-header', $header_args );
 
 	// theme nav menu locations
 	register_nav_menu('primary_menu', 'Main Menu');
 	register_nav_menu('footer_menu', 'Footer Menu');
 }
 
-add_action('init', 'origin_theme_setup'); // call the theme setup function when the theme is initialised
+add_action('init', 'causality_theme_setup'); // call the theme setup function when the theme is initialised
+
+function causality_post_setup() {
+	add_image_size('header', 500, 250, true);
+}
+
+add_action('after_setup_theme', 'causality_post_setup');
 
 // set up the customize register
-function origin_customize_register( $wp_customize ) {
+function causality_customize_register( $wp_customize ) {
 
 	// function for adding an array of the settings to a section in the theme customizer
 	function add_settings_to_sections($section, $settings, $wp_customize) {
@@ -38,14 +52,14 @@ function origin_customize_register( $wp_customize ) {
 
 			if ($settings[$i]->type == 'color') {
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
-					'label'      => __( $settings[$i]->label, 'origin' ),
+					'label'      => __( $settings[$i]->label, 'causality' ),
 					'section'    => $section,
 					'settings'   => $settings[$i]->id,
 					'priority'	 => $i*1,
 				) ) );
 			} else {
 				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
-					'label'      => __( $settings[$i]->label, 'origin' ),
+					'label'      => __( $settings[$i]->label, 'causality' ),
 					'type'			 => $settings[$i]->type,
 					'section'    => $section,
 					'settings'   => $settings[$i]->id,
@@ -57,8 +71,8 @@ function origin_customize_register( $wp_customize ) {
 
 	// color customization options
 	$wp_customize->add_section( 'color_scheme' , array(
-		'title'      => __( 'Color Scheme', 'origin' ),
-		'priority'   => 30,
+		'title'      => __( 'Color Scheme', 'causality' ),
+		'priority'   => 62,
 	) );
 
 	$color_options = array(
@@ -71,8 +85,8 @@ function origin_customize_register( $wp_customize ) {
 
 	// social media options
 	$wp_customize->add_section( 'social_media' , array(
-		'title'      => __( 'Social Media Links', 'origin' ),
-		'priority'   => 40,
+		'title'      => __( 'Social Media Links', 'causality' ),
+		'priority'   => 61,
 	) );
 
 	$social_options = array(
@@ -84,10 +98,10 @@ function origin_customize_register( $wp_customize ) {
 
 	add_settings_to_sections('social_media', $social_options, $wp_customize);
 
-	// footer options
+	// footer options - TODO Scrap this and replace it with another area for widgets - apply unique styles
 	$wp_customize->add_section( 'footer_options' , array( // first arg is section_id
-		'title'      => __( 'Footer Options', 'origin' ),
-		'priority'   => 65,
+		'title'      => __( 'Footer Options', 'causality' ),
+		'priority'   => 63,
 	) );
 
 	$footer_options = array();
@@ -100,8 +114,8 @@ function origin_customize_register( $wp_customize ) {
 
 	// Developer Options
 	$wp_customize->add_section( 'dev_options' , array(
-		'title'      => __( 'Developer Options', 'origin' ),
-		'priority'   => 99,
+		'title'      => __( 'Developer Options', 'causality' ),
+		'priority'   => 999,
 	) );
 
 	$dev_options = array(
@@ -110,36 +124,11 @@ function origin_customize_register( $wp_customize ) {
 
 	add_settings_to_sections('dev_options', $dev_options, $wp_customize);
 
-	// --- dynamic theme customizer code --- //
-	/*$wp_customize->add_setting( 'footer_boxes_num' , array( // add code to refresh customize panel when this option is modified
-		'default'   => 3,
-		'transport' => 'refresh',
-	) );
-
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'footer_boxes_num_ctrl', array(
-		'label'      => __( 'Number of Footer Boxes', 'origin' ),
-		'type'			 => 'number',
-		'section'    => 'footer_options',
-		'settings'   => 'footer_boxes_num',
-		'priority'	 => 1,
-	) ) );*/
-
-	//ChromePhp::log('footer_boxes_num = '.get_theme_mod('footer_boxes_num'));
-	// --- end --- //
+	// Remove unused sections
+	$wp_customize->remove_section('colors');
 }
-add_action( 'customize_register', 'origin_customize_register' );
 
-function origin_customizer_update()
-{
-	wp_enqueue_script(
-		  'origin_themecustomizer', // give the script and ID
-			get_template_directory_uri().'/js/theme-customizer.js', // point to file
-		  array( 'jquery','customize-preview' ),	// define dependencies
-		  '1.0.0',						// define a version (optional)
-		  true					// put script in footer?
-	);
-}
-//add_action( 'customize_preview_init', 'origin_customizer_update' );
+add_action( 'customize_register', 'causality_customize_register' );
 
 function set_excerpt_length() {
 	return 30;
@@ -147,7 +136,7 @@ function set_excerpt_length() {
 
 add_filter('excerpt_length', 'set_excerpt_length');
 
-function origin_init_widgets() {
+function causality_init_widgets() {
 	register_sidebar(array(
 		'name' => 'Blog Sidebar',
 		'id' => 'blog_sidebar',
@@ -158,4 +147,4 @@ function origin_init_widgets() {
 	));
 }
 
-add_action('widgets_init', 'origin_init_widgets');
+add_action('widgets_init', 'causality_init_widgets');

@@ -2,7 +2,8 @@
 .origin-footer {
   display: flex;
   flex-direction: row;
-  background: $scss-primary-color;
+  background: #fff; //$scss-primary-color;
+  border-top: solid #000;
   color: $scss-primary-text-color;
   .footer-wrapper { flex-grow: 1 };
 }

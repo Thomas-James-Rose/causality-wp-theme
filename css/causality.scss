@@ -4,14 +4,17 @@
 html, body {
   margin: 0;
   color: #111;
-  background: #eee;
+  background: #fff;
   font-family: 'Source Sans Pro', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-p { text-align: justify; }
+p { 
+  font-size: 1em;
+  text-align: justify; 
+}
 
 .origin-nav {
   list-style: none;
