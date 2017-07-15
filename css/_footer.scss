@@ -2,28 +2,82 @@
 .origin-footer {
   display: flex;
   flex-direction: row;
-  background: #fff; //$scss-primary-color;
+  background: $scss-primary-color;
   border-top: solid #000;
   color: $scss-primary-text-color;
   .footer-wrapper { flex-grow: 1 };
 }
 
-// Nav (Footer Menu)
-.footer-nav {
-  display: flex; flex-direction: column; padding: 1em 2em 1em 2em; list-style: none; margin: 0; white-space: nowrap;
-  .sub-menu { display: none; } // hide sub-menus
-  li a {
-    padding-left: 0.5em;
-  }
-  > li > a {
-    color: $scss-primary-text-color;
-    border-left: solid 0.1em $scss-primary-text-color;
-    &:hover{
-      border-left: solid 0.1em $scss-accent-color;
-      color: $scss-accent-color;
+// TODO: Cleanup code to cut down nesting!
+
+// Footer Widgets
+.footer-bar {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  color: $scss-primary-text-color;
+
+  .widget {
+    width: 25%; // TODO: Sort this out! This is a temporary measure that only suits up to four widgets!
+    margin: 1em 0.5em 1em 0.5em;
+
+    .widget-title {
+      background: $scss-primary-color;
+      color: $scss-primary-text-color;
+      padding: 0 5% 0 5%;
+      margin: 0;
     }
+
+    .widget-body {
+      padding: 0 5% 0 5%;
+      
+      .textwidget {
+        max-width: 20em;
+      }
+
+      p {
+        text-align: left;
+      }
+
+      ul {
+        list-style: none;
+        text-decoration: none;
+        padding: 0;
+
+        li {
+          a {
+            color: $scss-primary-text-color;
+            text-decoration: none;
+            font-weight: bold;
+
+            &:hover {
+              color: $scss-accent-color;
+            }
+          }
+
+          > .post-date:before {
+            content: " - ";
+          }
+        }
+      }
+    }
+
+    // Nav (Footer Menu)
+    .menu-nav-menu-container ul {
+      display: flex; flex-direction: column; list-style: none; white-space: nowrap;
+      .sub-menu { display: none; } // hide sub-menus
+      li a {
+        padding-left: 0.5em;
+      }
+      > li > a {
+        color: $scss-primary-text-color;
+        border-left: solid 0.1em $scss-primary-text-color;
+        &:hover{
+          border-left: solid 0.1em $scss-accent-color;
+          color: $scss-accent-color;
+        }
+      }
+    }
+
   }
 }
-
-// Footer Text Boxes
-.footer-text { padding: 0em 2em 1em 2em; }

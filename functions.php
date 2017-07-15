@@ -6,7 +6,7 @@
 // enqueue custom scripts and styles
 function causality_scripts_enqueue() {
 	wp_enqueue_style('themestyles', get_template_directory_uri().'/css/causality.css', array(), '1.0.0', 'all'); // enqueue custom CSS
-  wp_enqueue_script('themescripts', get_template_directory_uri().'/js/causality.js', array(), '1.0.0', true);  // enqueue custom JS
+	wp_enqueue_script('themescripts', get_template_directory_uri().'/js/causality.js', array(), '1.0.0', true);  // enqueue custom JS
 }
 
 add_action('wp_enqueue_scripts', 'causality_scripts_enqueue'); // add the custom CSS and JS
@@ -28,7 +28,6 @@ function causality_theme_setup() {
 
 	// theme nav menu locations
 	register_nav_menu('primary_menu', 'Main Menu');
-	register_nav_menu('footer_menu', 'Footer Menu');
 }
 
 add_action('init', 'causality_theme_setup'); // call the theme setup function when the theme is initialised
@@ -60,7 +59,7 @@ function causality_customize_register( $wp_customize ) {
 			} else {
 				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
 					'label'      => __( $settings[$i]->label, 'causality' ),
-					'type'			 => $settings[$i]->type,
+					'type'		 => $settings[$i]->type,
 					'section'    => $section,
 					'settings'   => $settings[$i]->id,
 					'priority'	 => $i*1,
@@ -68,20 +67,6 @@ function causality_customize_register( $wp_customize ) {
 			}
 		}
 	}
-
-	// color customization options
-	$wp_customize->add_section( 'color_scheme' , array(
-		'title'      => __( 'Color Scheme', 'causality' ),
-		'priority'   => 62,
-	) );
-
-	$color_options = array(
-		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'type' => 'color', 'default_val' => '#3f51b4'],
-		(object)['id' => 'accent_color', 'label' => 'Accent Color', 'type' => 'color', 'default_val' => '#fe5252'],
-		(object)['id' => 'primary_text_color', 'label' => 'Complementary Text Color', 'type' => 'color', 'default_val' => '#ffffff']
-	);
-
-	add_settings_to_sections('color_scheme', $color_options, $wp_customize);
 
 	// social media options
 	$wp_customize->add_section( 'social_media' , array(
@@ -98,19 +83,19 @@ function causality_customize_register( $wp_customize ) {
 
 	add_settings_to_sections('social_media', $social_options, $wp_customize);
 
-	// footer options - TODO Scrap this and replace it with another area for widgets - apply unique styles
-	$wp_customize->add_section( 'footer_options' , array( // first arg is section_id
-		'title'      => __( 'Footer Options', 'causality' ),
-		'priority'   => 63,
+	// color customization options
+	$wp_customize->add_section( 'color_scheme' , array(
+		'title'      => __( 'Color Scheme', 'causality' ),
+		'priority'   => 62,
 	) );
 
-	$footer_options = array();
-	$boxCount = 3;
-	for ($i = 0; $i < $boxCount; $i++) {
-		$footer_options[$i] = (object)['id' => 'footer_box_'.($i+1), 'label' => 'Footer Box '.($i+1), 'type' => 'textarea', 'default_val' => ''];
-	}
+	$color_options = array(
+		(object)['id' => 'primary_color', 'label' => 'Primary Color', 'type' => 'color', 'default_val' => '#000000'],
+		(object)['id' => 'accent_color', 'label' => 'Accent Color', 'type' => 'color', 'default_val' => '#dd3333'],
+		(object)['id' => 'primary_text_color', 'label' => 'Complementary Text Color', 'type' => 'color', 'default_val' => '#ffffff']
+	);
 
-	add_settings_to_sections('footer_options', $footer_options, $wp_customize);
+	add_settings_to_sections('color_scheme', $color_options, $wp_customize);
 
 	// Developer Options
 	$wp_customize->add_section( 'dev_options' , array(
@@ -128,7 +113,7 @@ function causality_customize_register( $wp_customize ) {
 	$wp_customize->remove_section('colors');
 }
 
-add_action( 'customize_register', 'causality_customize_register' );
+add_action('customize_register', 'causality_customize_register');
 
 function set_excerpt_length() {
 	return 30;
@@ -145,6 +130,17 @@ function causality_init_widgets() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3><div class="widget-body">'
 	));
+
+	register_sidebar(array(
+		'name' => 'Footer Widgets',
+		'id' => 'footer_widgets',
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3><div class="widget-body">'
+	));
+
+	// TODO: replace footer text boxes with widget bar
 }
 
 add_action('widgets_init', 'causality_init_widgets');

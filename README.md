@@ -12,5 +12,6 @@ A WordPress theme that offers plenty of customization options and intregrated su
 ## Feature Roadmap
 
 * Support for WooCommerce
-* Page Templates
+* Page templates
 * Visual redesign
+* Full responsiveness

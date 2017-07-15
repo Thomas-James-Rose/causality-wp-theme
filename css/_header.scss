@@ -1,11 +1,16 @@
 // Header Styles
 .origin-header {
-  display: flex;
-  flex-direction: column;
   background: $scss-primary-color;
   border-bottom: solid $scss-accent-color;
 }
-.top-bar { width: 100%; display: flex; flex-direction: row; border-bottom: solid #000; }
+.top-bar { 
+  width: 100%; 
+  display: flex; 
+  flex-direction: row; 
+  background: #fff; 
+  border-bottom: solid #000; 
+  z-index: 2;
+}
 
 // Social Media Icons
 .icon-outer-wrapper {
@@ -25,6 +30,7 @@
   }
 }
 
+// Brand Icon Colours
 #facebook-icon i:hover { color: #3B5998; }
 #twitter-icon i:hover { color: #7EC7FA; }
 #instagram-icon i:hover { 
@@ -37,6 +43,7 @@
 
 // Nav (Main Menu)
 .top-bar > nav { flex: 3; }
+
 .top-nav { // nav menu
   flex-grow: 1; display: flex; flex-direction: row; width: 100%; padding: 0; margin: 0; height: 100%;
 
@@ -54,7 +61,6 @@
     }
 
     &:hover > a {
-        //filter: brightness(90%);
         color: $scss-accent-color;
         border-bottom: solid 0.3em $scss-accent-color;
 
@@ -86,7 +92,6 @@
         padding: 0.5em;
         color: #000;
         background: #fff; 
-        //border: solid #000;
         border-left: solid transparent;
         width: 100%;
         text-align: center;
@@ -108,8 +113,6 @@
           }
         }
       }
-
-      //+ li > a { border-top: none; }
     }
 
     > .current_page_item > a { // current page
@@ -120,11 +123,18 @@
 
 // Logo
 .logo-wrapper {
-  //background: $scss-primary-color;
+  background-color: $scss-primary-color; // fallback color
+  background-image: url("../img/nebula.jpg"); // TODO: Add customizer option for this! This is a placeholder!
+  background-size: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   text-align: center;
   padding: 1em 2em 1em 2em;
+  flex: 1 1 auto;
+  overflow: hidden;
+  //height: 50vh;
 }
 
 .header-img {
-  max-width: 600px;
+  max-width: 400px;
 }

@@ -1,0 +1,19 @@
+// Media queries for responsiveness
+@media (max-width: 990px) { 
+  .top-bar {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        display: none;
+    }
+    .post-feed {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+  .icon-outer-wrapper { display: none; }
+}

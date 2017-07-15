@@ -24,16 +24,16 @@ main {
   padding: 2em 2em 1em 2em;
 }
 .origin-header {
-  display: flex;
-  flex-direction: column;
-  background: #44aeba;
-  border-bottom: solid #87decd;
+  background: #0a0000;
+  border-bottom: solid #d33;
 }
 .top-bar {
   width: 100%;
   display: flex;
   flex-direction: row;
+  background: #fff;
   border-bottom: solid #000;
+  z-index: 2;
 }
 .icon-outer-wrapper {
   flex: 1;
@@ -48,7 +48,7 @@ main {
   font-size: 2em;
 }
 .icon-outer-wrapper .header-icon i:hover {
-  color: #87decd;
+  color: #d33;
 }
 .icon-outer-wrapper .header-icon + .header-icon {
   margin-left: 1em;
@@ -60,7 +60,7 @@ main {
   color: #7ec7fa;
 }
 #instagram-icon i:hover {
-  color: #87decd;
+  color: #d33;
   background: -webkit-gradient(linear, left top, right bottom, from(#5442d6), color-stop(33%, #d32475), color-stop(66%, #f32d3f), to(#fec053));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -99,8 +99,8 @@ main {
   border-bottom: solid 0.3em #fff;
 }
 .top-nav > li:hover > a {
-  color: #87decd;
-  border-bottom: solid 0.3em #87decd;
+  color: #d33;
+  border-bottom: solid 0.3em #d33;
 }
 .top-nav > li:hover > a:after {
   bottom: 0;
@@ -110,12 +110,12 @@ main {
   content: '';
   width: 0;
   height: 0;
-  border-bottom: solid 10px #87decd;
+  border-bottom: solid 10px #d33;
   border-left: solid 10px transparent;
   border-right: solid 10px transparent;
 }
 .top-nav > .current_page_item > a {
-  border-bottom: solid 0.3em #87decd;
+  border-bottom: solid 0.3em #d33;
 }
 .top-nav .sub-menu {
   position: absolute;
@@ -138,8 +138,8 @@ main {
   text-align: center;
 }
 .top-nav .sub-menu > li > a:hover {
-  color: #87decd;
-  border-left: solid 0.2em #87decd;
+  color: #d33;
+  border-left: solid 0.2em #d33;
 }
 .top-nav .sub-menu > li > a:hover:after {
   position: absolute;
@@ -148,54 +148,97 @@ main {
   content: '';
   width: 0;
   height: 0;
-  border-left: solid 10px #87decd;
+  border-left: solid 10px #d33;
   border-top: solid 10px transparent;
   border-bottom: solid 10px transparent;
 }
 .top-nav .sub-menu > .current_page_item > a {
-  border-left: solid 0.2em #87decd;
+  border-left: solid 0.2em #d33;
 }
 .logo-wrapper {
+  background-color: #0a0000;
+  background-image: url("../img/nebula.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   text-align: center;
   padding: 1em 2em 1em 2em;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 .header-img {
-  max-width: 600px;
+  max-width: 400px;
 }
 .origin-footer {
   display: flex;
   flex-direction: row;
-  background: #fff;
+  background: #0a0000;
   border-top: solid #000;
-  color: #0a0a0a;
+  color: #fff;
 }
 .origin-footer .footer-wrapper {
   flex-grow: 1;
 }
-.footer-nav {
+.footer-bar {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+}
+.footer-bar .widget {
+  width: 25%;
+  margin: 1em 0.5em 1em 0.5em;
+}
+.footer-bar .widget .widget-title {
+  background: #0a0000;
+  color: #fff;
+  padding: 0 5% 0 5%;
+  margin: 0;
+}
+.footer-bar .widget .widget-body {
+  padding: 0 5% 0 5%;
+}
+.footer-bar .widget .widget-body .textwidget {
+  max-width: 20em;
+}
+.footer-bar .widget .widget-body p {
+  text-align: left;
+}
+.footer-bar .widget .widget-body ul {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+.footer-bar .widget .widget-body ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.footer-bar .widget .widget-body ul li a:hover {
+  color: #d33;
+}
+.footer-bar .widget .widget-body ul li > .post-date:before {
+  content: " - ";
+}
+.footer-bar .widget .menu-nav-menu-container ul {
   display: flex;
   flex-direction: column;
-  padding: 1em 2em 1em 2em;
   list-style: none;
-  margin: 0;
   white-space: nowrap;
 }
-.footer-nav .sub-menu {
+.footer-bar .widget .menu-nav-menu-container ul .sub-menu {
   display: none;
 }
-.footer-nav li a {
+.footer-bar .widget .menu-nav-menu-container ul li a {
   padding-left: 0.5em;
 }
-.footer-nav > li > a {
-  color: #0a0a0a;
-  border-left: solid 0.1em #0a0a0a;
+.footer-bar .widget .menu-nav-menu-container ul > li > a {
+  color: #fff;
+  border-left: solid 0.1em #fff;
 }
-.footer-nav > li > a:hover {
-  border-left: solid 0.1em #87decd;
-  color: #87decd;
-}
-.footer-text {
-  padding: 0em 2em 1em 2em;
+.footer-bar .widget .menu-nav-menu-container ul > li > a:hover {
+  border-left: solid 0.1em #d33;
+  color: #d33;
 }
 .home-posts {
   display: flex;
@@ -221,7 +264,7 @@ main {
   margin: 0 0 0.2em 0;
 }
 .blog-post a.post-title:hover {
-  color: #87decd;
+  color: #d33;
 }
 .blog-post a.post-title > h2 {
   margin: 0 0 0.2em 0;
@@ -244,7 +287,7 @@ main {
   margin-right: 0.5em;
 }
 .blog-post ul.post-categories li a:hover {
-  color: #87decd;
+  color: #d33;
 }
 .blog-post .post-thumbnail {
   width: 50%;
@@ -260,9 +303,9 @@ main {
   margin-bottom: 2em;
 }
 .sidebar .widget .widget-title {
-  background: #44aeba;
-  border-bottom: solid 1px #87decd;
-  color: #0a0a0a;
+  background: #0a0000;
+  border-bottom: solid 1px #d33;
+  color: #fff;
   padding: 0.2em 0 0.2em 5%;
   margin-top: 0;
 }
@@ -281,7 +324,7 @@ main {
   font-weight: bold;
 }
 .sidebar .widget .widget-body ul li a:hover {
-  color: #87decd;
+  color: #d33;
 }
 .sidebar .widget .widget-body ul li > .post-date:before {
   content: " - ";
@@ -291,8 +334,8 @@ main {
   list-style: none;
 }
 .comment .comment-meta {
-  background: #44aeba;
-  color: #0a0a0a;
+  background: #0a0000;
+  color: #fff;
   padding: 0.5em;
   border: solid #111 1px;
 }
@@ -303,7 +346,7 @@ main {
   float: right;
 }
 .comment .comment-meta .comment-metadata a {
-  color: #0a0a0a;
+  color: #fff;
 }
 .comment .comment-meta .comment-metadata .comment-edit-link:before {
   content: " - ";
@@ -319,5 +362,23 @@ main {
   font-weight: bold;
 }
 .comment .reply a:hover {
-  color: #87decd;
+  color: #d33;
+}
+@media (max-width: 990px) {
+  .top-bar {
+    flex-direction: column;
+  }
+}
+@media (max-width: 650px) {
+  .sidebar {
+    display: none;
+  }
+  .post-feed {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .icon-outer-wrapper {
+    display: none;
+  }
 }
