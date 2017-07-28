@@ -21,45 +21,15 @@
     margin: 1em 0.5em 1em 0.5em;
 
     .widget-title {
-      background: $scss-primary-color;
-      color: $scss-primary-text-color;
       padding: 0 5% 0 5%;
       margin: 0;
     }
 
-    .widget-body {
-      padding: 0 5% 0 5%;
-      
-      .textwidget {
-        max-width: 20em;
-      }
+    .textwidget { max-width: 20em; }
 
-      p {
-        text-align: left;
-      }
+    p { text-align: left; }
 
-      ul {
-        list-style: none;
-        text-decoration: none;
-        padding: 0;
-
-        li {
-          a {
-            color: $scss-primary-text-color;
-            text-decoration: none;
-            font-weight: bold;
-
-            &:hover {
-              color: $scss-accent-color;
-            }
-          }
-
-          > .post-date:before {
-            content: " - ";
-          }
-        }
-      }
-    }
+    ul li a { color: $scss-primary-text-color; }      
 
     // Nav (Footer Menu)
     .menu-nav-menu-container ul {

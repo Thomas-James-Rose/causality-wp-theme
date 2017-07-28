@@ -69,13 +69,35 @@
 
   // Featured Image
   .post-thumbnail {
-    //margin: auto;
     width: 50%;
+    img { width: 100%; height: auto; }
+  }
+}
 
-    img {
-      width: 100%;
-      height: auto;
+// Base Widget Styles - TODO: Move this elsewhere? Maybe look at partial structure in general?
+.widget-title {
+  color: $scss-primary-text-color;
+}
+.widget-body {
+  padding: 0 5% 0 5%;
+}
+.textwidget p {
+  font-size: 1em;
+}
+.widget ul {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  li a {
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: $scss-accent-color;
     }
+  }
+  .post-date:before {
+      content: " - ";
   }
 }
 
@@ -89,35 +111,20 @@
   .widget-title {
     background: $scss-primary-color;
     border-bottom: solid 1px $scss-accent-color;
-    //border-radius: 1em 0 0 0;
-    color: $scss-primary-text-color;
     padding: 0.2em 0 0.2em 5%;
     margin-top: 0;
   }
 
-  .widget-body {
-    padding: 0 5% 0 5%;
+  ul {
+    color: #111;
 
-    ul {
-      color: #111;
-      list-style: none;
-      text-decoration: none;
-      padding: 0;
+    li {
+      a {
+        color: #111;
+      }
 
-      li {
-        a {
-          color: #111;
-          text-decoration: none;
-          font-weight: bold;
-
-          &:hover {
-            color: $scss-accent-color;
-          }
-        }
-
-        > .post-date:before {
-          content: " - ";
-        }
+      > .post-date:before {
+        content: " - ";
       }
     }
   }

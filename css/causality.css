@@ -8,8 +8,11 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+h2 {
+  font-size: 2em;
+}
 p {
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: justify;
 }
 .origin-nav {
@@ -191,35 +194,17 @@ main {
   margin: 1em 0.5em 1em 0.5em;
 }
 .footer-bar .widget .widget-title {
-  background: #0a0000;
-  color: #fff;
   padding: 0 5% 0 5%;
   margin: 0;
 }
-.footer-bar .widget .widget-body {
-  padding: 0 5% 0 5%;
-}
-.footer-bar .widget .widget-body .textwidget {
+.footer-bar .widget .textwidget {
   max-width: 20em;
 }
-.footer-bar .widget .widget-body p {
+.footer-bar .widget p {
   text-align: left;
 }
-.footer-bar .widget .widget-body ul {
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
-}
-.footer-bar .widget .widget-body ul li a {
+.footer-bar .widget ul li a {
   color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-.footer-bar .widget .widget-body ul li a:hover {
-  color: #d33;
-}
-.footer-bar .widget .widget-body ul li > .post-date:before {
-  content: " - ";
 }
 .footer-bar .widget .menu-nav-menu-container ul {
   display: flex;
@@ -297,6 +282,30 @@ main {
   width: 100%;
   height: auto;
 }
+.widget-title {
+  color: #fff;
+}
+.widget-body {
+  padding: 0 5% 0 5%;
+}
+.textwidget p {
+  font-size: 1em;
+}
+.widget ul {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+.widget ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.widget ul li a:hover {
+  color: #d33;
+}
+.widget ul .post-date:before {
+  content: " - ";
+}
 .sidebar .widget {
   border: solid 1px #111;
   border-radius: 1em 0 1em 0;
@@ -306,28 +315,16 @@ main {
 .sidebar .widget .widget-title {
   background: #0a0000;
   border-bottom: solid 1px #d33;
-  color: #fff;
   padding: 0.2em 0 0.2em 5%;
   margin-top: 0;
 }
-.sidebar .widget .widget-body {
-  padding: 0 5% 0 5%;
-}
-.sidebar .widget .widget-body ul {
+.sidebar .widget ul {
   color: #111;
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
 }
-.sidebar .widget .widget-body ul li a {
+.sidebar .widget ul li a {
   color: #111;
-  text-decoration: none;
-  font-weight: bold;
 }
-.sidebar .widget .widget-body ul li a:hover {
-  color: #d33;
-}
-.sidebar .widget .widget-body ul li > .post-date:before {
+.sidebar .widget ul li > .post-date:before {
   content: " - ";
 }
 .comment {
