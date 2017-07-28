@@ -29,7 +29,7 @@ main {
   padding: 2em 2em 1em 2em;
 }
 .origin-header {
-  background: #0a0000;
+  background: #000;
   border-bottom: solid #d33;
 }
 .top-bar {
@@ -161,9 +161,9 @@ main {
   border-left: solid 0.2em #d33;
 }
 .logo-wrapper {
-  background-color: #0a0000;
-  background-image: url("../img/nebula.jpg");
-  background-size: 100%;
+  background-color: #000;
+  background-image: url("http://localhost/wordpress/wp-content/uploads/2017/07/nebula.jpg");
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   text-align: center;
@@ -175,7 +175,7 @@ main {
   max-width: 400px;
 }
 .origin-footer {
-  background: #0a0000;
+  background: #000;
   border-top: solid #000;
   color: #fff;
 }
@@ -313,7 +313,7 @@ main {
   margin-bottom: 2em;
 }
 .sidebar .widget .widget-title {
-  background: #0a0000;
+  background: #000;
   border-bottom: solid 1px #d33;
   padding: 0.2em 0 0.2em 5%;
   margin-top: 0;
@@ -324,6 +324,9 @@ main {
 .sidebar .widget ul li a {
   color: #111;
 }
+.sidebar .widget ul li a:hover {
+  color: #d33;
+}
 .sidebar .widget ul li > .post-date:before {
   content: " - ";
 }
@@ -332,7 +335,7 @@ main {
   list-style: none;
 }
 .comment .comment-meta {
-  background: #0a0000;
+  background: #000;
   color: #fff;
   padding: 0.5em;
   border: solid #111 1px;

@@ -1,7 +1,11 @@
 <?php
 
-// php debugger for Google Chrome
+// PHP debugger for Google Chrome
 //include 'chromephp/ChromePhp.php';
+
+/* 	=================================
+	========== THEME SETUP ==========
+	================================= */
 
 // enqueue custom scripts and styles
 function causality_scripts_enqueue() {
@@ -32,11 +36,11 @@ function causality_theme_setup() {
 
 add_action('init', 'causality_theme_setup'); // call the theme setup function when the theme is initialised
 
-function causality_post_setup() {
-	add_image_size('header', 500, 250, true);
-}
 
-add_action('after_setup_theme', 'causality_post_setup');
+
+/* 	==================================
+	======== THEME CUSTOMIZER ========
+	================================== */
 
 // set up the customize register
 function causality_customize_register( $wp_customize ) {
@@ -50,19 +54,30 @@ function causality_customize_register( $wp_customize ) {
 			) );
 
 			if ($settings[$i]->type == 'color') {
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
+				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( 
 					'label'      => __( $settings[$i]->label, 'causality' ),
 					'section'    => $section,
 					'settings'   => $settings[$i]->id,
-					'priority'	 => $i*1,
+					'priority'	 => ($i*1)+100,
 				) ) );
-			} else {
-				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $settings[$i]->id.'_ctrl', array( // first arg is control_id
+			} else if ($settings[$i]->type == 'image') {
+				$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $settings[$i]->id.'_ctrl', array(
+							'label'      => __( $settings[$i]->label, 'causality' ),
+							'section'    => $section,
+							'settings'   => $settings[$i]->id,
+							//'context'    => 'your_setting_context' 
+							'priority'	 => ($i*1)+100,
+						)
+					)
+				);
+			}
+			else {
+				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $settings[$i]->id.'_ctrl', array(
 					'label'      => __( $settings[$i]->label, 'causality' ),
 					'type'		 => $settings[$i]->type,
 					'section'    => $section,
 					'settings'   => $settings[$i]->id,
-					'priority'	 => $i*1,
+					'priority'	 => ($i*1)+100,
 				) ) );
 			}
 		}
@@ -97,6 +112,13 @@ function causality_customize_register( $wp_customize ) {
 
 	add_settings_to_sections('color_scheme', $color_options, $wp_customize);
 
+	// header background
+	$header_options = array(
+		(object)['id' => 'background_img', 'label' => 'Upload a Header Background', 'type' => 'image', 'default_val' => '']
+	);
+
+	add_settings_to_sections('header_image', $header_options, $wp_customize); // header_image is pre-defined by WP
+
 	// Developer Options
 	$wp_customize->add_section( 'dev_options' , array(
 		'title'      => __( 'Developer Options', 'causality' ),
@@ -115,12 +137,22 @@ function causality_customize_register( $wp_customize ) {
 
 add_action('customize_register', 'causality_customize_register');
 
+
+
+/* 	===============================
+	======== POST EXCERPTS ========
+	=============================== */
 function set_excerpt_length() {
 	return 30;
 }
 
 add_filter('excerpt_length', 'set_excerpt_length');
 
+
+
+/* 	=========================
+	======== WIDGETS ========
+	========================= */
 function causality_init_widgets() {
 	register_sidebar(array(
 		'name' => 'Blog Sidebar',
@@ -139,8 +171,6 @@ function causality_init_widgets() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3><div class="widget-body">'
 	));
-
-	// TODO: replace footer text boxes with widget bar
 }
 
 add_action('widgets_init', 'causality_init_widgets');

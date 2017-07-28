@@ -121,13 +121,15 @@
     li {
       a {
         color: #111;
+        &:hover { color: $scss-accent-color; }
       }
-
+      
       > .post-date:before {
         content: " - ";
       }
     }
   }
+  
 }
 
 // Comment Styles

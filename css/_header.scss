@@ -124,8 +124,8 @@
 // Logo
 .logo-wrapper {
   background-color: $scss-primary-color; // fallback color
-  background-image: url("../img/nebula.jpg"); // TODO: Add customizer option for this! This is a placeholder!
-  background-size: 100%;
+  background-image: $scss-header-background;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   text-align: center;

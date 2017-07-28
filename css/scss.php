@@ -15,12 +15,19 @@ function compileSCSS() {
   $primary_text_val = get_theme_mod('primary_text_color');
   if($primary_text_val == NULL) $primary_text_val = '#ffffff';
 
+  $header_background = get_theme_mod('background_img');
+
   // generate SCSS
   $sassy_code = '
-   $scss-primary-color: '.$primary_color_val.';
-   $scss-accent-color: '.$accent_color_val.';
-   $scss-primary-text-color: '.$primary_text_val.';
+    $scss-primary-color: '.$primary_color_val.';
+    $scss-accent-color: '.$accent_color_val.';
+    $scss-primary-text-color: '.$primary_text_val.';
   ';
+  if($header_background != NULL) {
+    $sassy_code = $sassy_code . '
+      $scss-header-background: url("'.$header_background.'");
+    ';
+  }
 
   // open _customize.scss
   $customize_file = __DIR__.'/_customize.scss';
