@@ -1,7 +1,5 @@
 // Footer Styles
 .origin-footer {
-  display: flex;
-  flex-direction: row;
   background: $scss-primary-color;
   border-top: solid #000;
   color: $scss-primary-text-color;
@@ -12,13 +10,14 @@
 
 // Footer Widgets
 .footer-bar {
-  flex: 1 1 auto;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: row;
   color: $scss-primary-text-color;
 
   .widget {
-    width: 25%; // TODO: Sort this out! This is a temporary measure that only suits up to four widgets!
+    flex: 1 1 auto;
     margin: 1em 0.5em 1em 0.5em;
 
     .widget-title {

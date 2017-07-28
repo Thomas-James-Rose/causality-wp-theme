@@ -20,6 +20,8 @@ p {
   text-decoration: none;
 }
 main {
+  width: 80%;
+  margin: auto;
   flex: 1 0 auto;
   padding: 2em 2em 1em 2em;
 }
@@ -170,8 +172,6 @@ main {
   max-width: 400px;
 }
 .origin-footer {
-  display: flex;
-  flex-direction: row;
   background: #0a0000;
   border-top: solid #000;
   color: #fff;
@@ -180,13 +180,14 @@ main {
   flex-grow: 1;
 }
 .footer-bar {
-  flex: 1 1 auto;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: row;
   color: #fff;
 }
 .footer-bar .widget {
-  width: 25%;
+  flex: 1 1 auto;
   margin: 1em 0.5em 1em 0.5em;
 }
 .footer-bar .widget .widget-title {
@@ -375,6 +376,9 @@ main {
   }
   .post-feed {
     width: 100%;
+  }
+  .footer-bar {
+    flex-direction: column;
   }
 }
 @media (max-width: 400px) {

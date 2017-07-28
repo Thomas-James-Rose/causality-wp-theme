@@ -12,6 +12,9 @@
     .post-feed {
         width: 100%;
     }
+    .footer-bar { 
+      flex-direction: column; 
+    }
 }
 
 @media (max-width: 400px) {
