@@ -1,7 +1,7 @@
 <!-- Single Post Page -->
 <?php get_header(); // from header.php ?>
 
-<main class="home-posts">
+<main class="sidebar-page">
 	<section class="post-feed">
 		<?php
 		if ( have_posts() ):

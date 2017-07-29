@@ -1,18 +1,9 @@
-// Homepage Post Feed Wrappers
-.home-posts {
-  display: flex;
-  flex-direction: row;
-}
-
+// Post Feed Wrapper
 .post-feed {
   width: 75%;
   padding-right: 1.5em;
 }
 
-.sidebar {
-  width: 25%;
-  padding-left: 1.5em;
-}
 
 // Post Styles
 .blog-post {
@@ -25,8 +16,9 @@
   }
 
   // Title
-  .post-title{
+  .post-title {
     color: #111;
+    font-size: 2rem;
     margin: 0 0 0.2em 0;
   }
 
@@ -36,6 +28,7 @@
     }
 
     > h2 {
+      font-size: 2rem;
       margin: 0 0 0.2em 0;
     }
   }
@@ -74,69 +67,12 @@
   }
 }
 
-// Base Widget Styles - TODO: Move this elsewhere? Maybe look at partial structure in general?
-.widget-title {
-  color: $scss-primary-text-color;
-}
-.widget-body {
-  padding: 0 5% 0 5%;
-}
-.textwidget p {
-  font-size: 1em;
-}
-.widget ul {
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
-  li a {
-    text-decoration: none;
-    font-weight: bold;
-
-    &:hover {
-      color: $scss-accent-color;
-    }
-  }
-  .post-date:before {
-      content: " - ";
-  }
-}
-
-// Sidebar
-.sidebar .widget {
-  border: solid 1px #111;
-  border-radius: 1em 0 1em 0;
-  overflow: hidden;
-  margin-bottom: 2em;
-
-  .widget-title {
-    background: $scss-primary-color;
-    border-bottom: solid 1px $scss-accent-color;
-    padding: 0.2em 0 0.2em 5%;
-    margin-top: 0;
-  }
-
-  ul {
-    color: #111;
-
-    li {
-      a {
-        color: #111;
-        &:hover { color: $scss-accent-color; }
-      }
-      
-      > .post-date:before {
-        content: " - ";
-      }
-    }
-  }
-  
-}
-
 // Comment Styles
 .comment {
   $comment-padding: 0.5em;
   max-width: 720px;
   list-style: none;
+  margin-bottom: 1em;
 
   .comment-meta {
     background: $scss-primary-color;
@@ -146,12 +82,17 @@
 
     .comment-author {
       display: inline-block;
+      a { color: $scss-primary-text-color; }
     }
 
     .comment-metadata {
       float: right;
       a { color: $scss-primary-text-color; }
-      .comment-edit-link:before { content: " - "; }
+      .comment-edit-link:before { content: " - "; color: $scss-primary-text-color;  }
+
+      .comment-edit-link:hover {
+        color: $scss-accent-color;
+      }
     }
 
     .comment-awaiting-moderation {
@@ -160,15 +101,31 @@
   }
 
   .comment-content {
-    padding-left: $comment-padding;
+    font-size: 0.8rem;
+    padding: 0 1rem 0 1rem;
   }
 
   .reply {
-    padding: 0 0 $comment-padding $comment-padding;
+    padding: 0 0 1rem 1rem;
     font-weight: bold;
-
-    a:hover {
-      color: $scss-accent-color;
-    }
+    a:hover { color: $scss-accent-color; }
   }
+
+  .children {
+    margin-bottom: 0;
+  }
+}
+
+.comment-body {
+  border: solid 1px $scss-primary-color;
+}
+
+// Comment Response
+.comment-respond {
+  max-width: 720px;
+  border-top: solid $scss-primary-color;
+}
+#comment {
+  width: 100%;
+  min-height: 150px;
 }

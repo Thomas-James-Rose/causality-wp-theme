@@ -1,0 +1,45 @@
+.sidebar-page {
+  display: flex;
+  flex-direction: row;
+
+  .post-feed, .page-content {
+    width: 75%;
+    padding-right: 1.5em;
+  }
+}
+
+// Sidebar
+.sidebar {
+  width: 25%;
+  padding-left: 1.5em;
+}
+
+.sidebar .widget {
+  border: solid 1px #111;
+  border-radius: 1em 0 1em 0;
+  overflow: hidden;
+  margin-bottom: 2em;
+
+  .widget-title {
+    background: $scss-primary-color;
+    border-bottom: solid 1px $scss-accent-color;
+    padding: 0.2em 0 0.2em 5%;
+    margin-top: 0;
+  }
+
+  ul {
+    color: #111;
+
+    li {
+      a {
+        color: #111;
+        &:hover { color: $scss-accent-color; }
+      }
+      
+      > .post-date:before {
+        content: " - ";
+      }
+    }
+  }
+  
+}

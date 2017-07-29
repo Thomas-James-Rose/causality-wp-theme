@@ -1,7 +1,7 @@
 <!-- Posts Feed Page -->
 <?php get_header(); // from header.php ?>
 
-<main class="home-posts">
+<main class="sidebar-page">
 	<section class="post-feed">
 		<?php
 		// Main Post Loop - retrieves the posts of the WordPress site */
