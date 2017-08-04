@@ -8,10 +8,15 @@ A WordPress theme that offers plenty of customization options and intregrated su
 * Dynamic server-side SCSS compiling
 * Widget support
 * Social media links
+* Page templates
+
+## What is currently being worked on?
+
+* Switch to BEM to organize the SCSS
+* Support for WooCommerce
+* Visual redesign
+
 
 ## Feature Roadmap
 
-* Support for WooCommerce
-* Page templates
-* Visual redesign
 * Full responsiveness
