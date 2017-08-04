@@ -1,15 +1,12 @@
 // Footer Styles
-.origin-footer {
+.footer {
   background: $scss-primary-color;
   border-top: solid #000;
   color: $scss-primary-text-color;
-  .footer-wrapper { flex-grow: 1 };
 }
 
-// TODO: Cleanup code to cut down nesting!
-
 // Footer Widgets
-.footer-bar {
+.footer__widgets {
   width: 80%;
   margin: auto;
   display: flex;

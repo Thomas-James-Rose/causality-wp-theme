@@ -17,7 +17,7 @@ endif;
 ?>
 
 <body <?php body_class($custom_class); // call the WP function to create a class for each body on each page ?>>
-	<header class="origin-header">
+	<header class="header">
 		<div class="top-bar">
 			<div class="icon-outer-wrapper secondary-color">
 				<div class="icon-inner-wrapper">
@@ -45,7 +45,7 @@ endif;
 		</div>
 		<div class="logo-wrapper">
 			<?php if(get_header_image() != '') { ?>
-				<img class="header-img" src="<?php header_image(); ?>" alt="" />
+				<img id="header-img" src="<?php header_image(); ?>" alt="" />
 			<?php } else if(get_header_textcolor() != 'blank') { ?>
 				<h1 class="custom-header">
 					<?php bloginfo('name') ?>

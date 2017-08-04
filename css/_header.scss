@@ -1,5 +1,5 @@
 // Header Styles
-.origin-header {
+.header {
   background: $scss-primary-color;
   border-bottom: solid $scss-accent-color;
 }
@@ -18,10 +18,10 @@
   display: inline-grid;
   text-align: center;
   padding: 0.48em;
-  background: #fff; // $scss-primary-color;
+  background: $scss-primary-color; // #fff
 
   .header-icon {
-    color: #000;
+    color: $scss-primary-text-color; //#000;
     grid-row: 1;
     font-size: 2em;
 
@@ -30,8 +30,8 @@
   }
 }
 
-// Brand Icon Colours
-#facebook-icon i:hover { color: #3B5998; }
+// Brand Icon Colours - Temporarily Removed
+/*#facebook-icon i:hover { color: #3B5998; }
 #twitter-icon i:hover { color: #7EC7FA; }
 #instagram-icon i:hover { 
   color: $scss-accent-color; // fallback
@@ -39,15 +39,20 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-#linkedin-icon i:hover { color: #007BB6; }
+#linkedin-icon i:hover { color: #007BB6; }*/
 
 // Nav (Main Menu)
 .top-bar > nav { flex: 3; }
 
 .top-nav { // nav menu
   flex-grow: 1; display: flex; flex-direction: row; width: 100%; padding: 0; margin: 0; height: 100%;
+  list-style: none; font-weight: bold;
 
-  > li { // menu item
+  background: $scss-primary-color;
+  
+  li a { text-decoration: none; }
+
+  > .menu-item { // menu item
     display: inline-grid; flex: 1 1 auto; height: 100%; position: relative; font-size: 1.2em;
     &:hover > .sub-menu { display: block; }
 
@@ -55,68 +60,72 @@
       display: block;
       text-align: center;
       padding: 0.5em;
-      color: #000;
-      background: #fff;
-      border-bottom: solid 0.3em #fff;
+      color: $scss-primary-text-color; //color: #000;
+      background: $scss-primary-color; //#fff;
+      //border-bottom: solid 0.3em #fff;
     }
 
     &:hover > a {
         color: $scss-accent-color;
-        border-bottom: solid 0.3em $scss-accent-color;
+        //border-bottom: solid 0.3em $scss-accent-color;
 
-        &:after {
-          bottom: 0;
+        &:before {
+          //left: 25%;
           position: absolute;
-          left: 50%;
-          transform: translate(-50%, 0%);
+          //top: 50%;
+          transform: translate(-20px, 7px) rotateZ(45deg);
           content: '';
           width: 0;
           height: 0;
-          border-bottom: solid 10px $scss-accent-color;
-          border-left: solid 10px transparent;
-          border-right: solid 10px transparent;
+          border-top: solid 5px $scss-accent-color;
+          border-bottom: solid 5px $scss-accent-color;
+          border-left: solid 5px $scss-accent-color;
+          border-right: solid 5px $scss-accent-color;
         }
       }
   }
 
   > .current_page_item > a { // current page
-    border-bottom: solid 0.3em $scss-accent-color;
+    color: $scss-accent-color;
+    //border-bottom: solid 0.3em $scss-accent-color;
   }
 
   .sub-menu { // child menu
     position: absolute; top: 100%; list-style: inside none; padding-left: 0; display: none; width: 100%;
+    background: $scss-primary-color; //#fff; 
 
     > li { // child menu item
       display: flex; width: 100%; 
       > a {
         padding: 0.5em;
-        color: #000;
-        background: #fff; 
+        color: $scss-primary-text-color; //color: #000;
         border-left: solid transparent;
         width: 100%;
         text-align: center;
 
         &:hover {
           color: $scss-accent-color;
-          border-left: solid 0.2em $scss-accent-color;
+          //border-bottom: solid 0.2em $scss-accent-color;
 
-          &:after {
+          &:before {
+            //left: 25%;
             position: absolute;
-            left: 0;
-            transform: translate(0%, 10%);
+            //top: 50%;
+            transform: translate(-20px, 9px);
             content: '';
             width: 0;
             height: 0;
-            border-left: solid 10px $scss-accent-color;
-            border-top: solid 10px transparent;
-            border-bottom: solid 10px transparent;
+            border-top: solid 5px transparent;
+            border-bottom: solid 5px transparent;
+            border-left: solid 5px $scss-accent-color;
+            //border-right: solid 5px $scss-accent-color;
           }
         }
       }
     }
 
     > .current_page_item > a { // current page
-      border-left: solid 0.2em $scss-accent-color;
+      color: $scss-accent-color;
     }
   }
 }
@@ -134,6 +143,6 @@
   overflow: hidden;
 }
 
-.header-img {
+#header-img {
   max-width: 400px;
 }

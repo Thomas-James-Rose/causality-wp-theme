@@ -174,3 +174,29 @@ function causality_init_widgets() {
 }
 
 add_action('widgets_init', 'causality_init_widgets');
+
+// Woocommerce Hooks
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+
+function causality_woocommerce_wrapper_start() {
+	echo '<main class="cy-main cy-main--shop">';
+}
+
+function causality_woocommerce_wrapper_end() {
+	echo '</main>';
+}
+
+function causality_product_summary_wrapper_start() {
+	echo '<section class="cy-product-summary">';
+}
+
+function causality_product_summary_wrapper_end() {
+	echo '</section>';
+}
+
+add_action('woocommerce_before_main_content', 'causality_woocommerce_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'causality_woocommerce_wrapper_end', 10);
+add_action('woocommerce_before_single_product_summary', 'causality_product_summary_wrapper_start', 20);
+add_action('woocommerce_after_single_product_summary', 'causality_product_summary_wrapper_end', 20);

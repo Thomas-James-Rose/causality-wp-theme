@@ -1,8 +1,8 @@
 <!-- Single Post Page -->
 <?php get_header(); // from header.php ?>
 
-<main class="sidebar-page">
-	<section class="post-feed">
+<main class="cy-main cy-main--sidebar">
+	<section class="cy-main__post-feed">
 		<?php
 		if ( have_posts() ):
 			while ( have_posts() ) : the_post(); ?>

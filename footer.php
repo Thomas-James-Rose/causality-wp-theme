@@ -1,5 +1,5 @@
-	<footer class="origin-footer">
-		<div class="footer-bar">
+	<footer class="footer">
+		<div class="footer__widgets">
 			<?php
 			if(is_active_sidebar('footer_widgets')) :
 					dynamic_sidebar('footer_widgets');

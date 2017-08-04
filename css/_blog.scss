@@ -1,131 +1,130 @@
 // Post Feed Wrapper
-.post-feed {
+.cy-main__post-feed {
   width: 75%;
   padding-right: 1.5em;
-}
 
+  // Post Styles
+  .blog-post {
+    margin-bottom: 2em;
 
-// Post Styles
-.blog-post {
-  margin-bottom: 2em;
-
-  // Anchor Tags
-  a {
-    color: #111;
-    text-decoration: none;
-  }
-
-  // Title
-  .post-title {
-    color: #111;
-    font-size: 2rem;
-    margin: 0 0 0.2em 0;
-  }
-
-  a.post-title{
-    &:hover {
-      color: $scss-accent-color;
+    // Anchor Tags
+    a {
+      color: #111;
+      text-decoration: none;
     }
 
-    > h2 {
+    // Title
+    .post-title {
+      color: #111;
       font-size: 2rem;
       margin: 0 0 0.2em 0;
     }
-  }
 
-  // Date
-  .post-date {
-    margin: 0 0 0.5em 0;
-  }
+    a.post-title{
+      &:hover {
+        color: $scss-accent-color;
+      }
 
-  // Category List
-  ul.post-categories {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-
-    > li + li {
-      margin-left: 0.5em;
+      > h2 {
+        font-size: 2rem;
+        margin: 0 0 0.2em 0;
+      }
     }
 
-    > li + li:before {
-      content: "//";
-      margin-right: 0.5em;
+    // Date
+    .post-date {
+      margin: 0 0 0.5em 0;
     }
 
-    li a:hover {
-      color: $scss-accent-color;
-    }
-  }
+    // Category List
+    ul.post-categories {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      margin: 0;
 
-  // Featured Image
-  .post-thumbnail {
-    width: 50%;
-    img { width: 100%; height: auto; }
-  }
-}
+      > li + li {
+        margin-left: 0.5em;
+      }
 
-// Comment Styles
-.comment {
-  $comment-padding: 0.5em;
-  max-width: 720px;
-  list-style: none;
-  margin-bottom: 1em;
+      > li + li:before {
+        content: "//";
+        margin-right: 0.5em;
+      }
 
-  .comment-meta {
-    background: $scss-primary-color;
-    color: $scss-primary-text-color;
-    padding: $comment-padding;
-    border: solid #111 1px;
-
-    .comment-author {
-      display: inline-block;
-      a { color: $scss-primary-text-color; }
-    }
-
-    .comment-metadata {
-      float: right;
-      a { color: $scss-primary-text-color; }
-      .comment-edit-link:before { content: " - "; color: $scss-primary-text-color;  }
-
-      .comment-edit-link:hover {
+      li a:hover {
         color: $scss-accent-color;
       }
     }
 
-    .comment-awaiting-moderation {
-      font-style: italic;
+    // Featured Image
+    .post-thumbnail {
+      width: 50%;
+      img { width: 100%; height: auto; }
     }
   }
 
-  .comment-content {
-    font-size: 0.8rem;
-    padding: 0 1rem 0 1rem;
+  // Comment Styles
+  .comment {
+    $comment-padding: 0.5em;
+    max-width: 720px;
+    list-style: none;
+    margin-bottom: 1em;
+
+    .comment-meta {
+      background: $scss-primary-color;
+      color: $scss-primary-text-color;
+      padding: $comment-padding;
+      border: solid #111 1px;
+
+      .comment-author {
+        display: inline-block;
+        a { color: $scss-primary-text-color; }
+      }
+
+      .comment-metadata {
+        float: right;
+        a { color: $scss-primary-text-color; }
+        .comment-edit-link:before { content: " - "; color: $scss-primary-text-color;  }
+
+        .comment-edit-link:hover {
+          color: $scss-accent-color;
+        }
+      }
+
+      .comment-awaiting-moderation {
+        font-style: italic;
+      }
+    }
+
+    .comment-content {
+      font-size: 0.8rem;
+      padding: 0 1rem 0 1rem;
+    }
+
+    .reply {
+      padding: 0 0 1rem 1rem;
+      font-weight: bold;
+      a:hover { color: $scss-accent-color; }
+    }
+
+    .children {
+      margin-bottom: 0;
+    }
   }
 
-  .reply {
-    padding: 0 0 1rem 1rem;
-    font-weight: bold;
-    a:hover { color: $scss-accent-color; }
+  .comment-body {
+    border: solid 1px $scss-primary-color;
   }
 
-  .children {
-    margin-bottom: 0;
+  // Comment Response
+  .comment-respond {
+    max-width: 720px;
+    border-top: solid $scss-primary-color;
   }
-}
-
-.comment-body {
-  border: solid 1px $scss-primary-color;
-}
-
-// Comment Response
-.comment-respond {
-  max-width: 720px;
-  border-top: solid $scss-primary-color;
-}
-#comment {
-  width: 100%;
-  min-height: 150px;
+  #comment {
+    width: 100%;
+    min-height: 150px;
+  }
 }

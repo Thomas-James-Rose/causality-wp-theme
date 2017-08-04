@@ -6,7 +6,7 @@ Template Name: Sidebar
 
 <?php get_header(); // from header.php ?>
 
-<main class="sidebar-page">
+<main class="cy-main cy-main--sidebar">
 	<section class="page-content">
 		<?php
 		if ( have_posts() ):

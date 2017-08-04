@@ -11,23 +11,43 @@ html, body {
   flex-direction: column;
 }
 
-p { 
-  font-size: 1.2em;
-  text-align: justify; 
-}
-
-.origin-nav {
-  list-style: none;
-  font-weight: bold;
-  li a { text-decoration: none; }
-}
-
-main {
+.cy-main {
   width: 80%;
   margin: auto;
   flex: 1 0 auto;
   padding: 2em 2em 1em 2em;
 }
+
+.cy-main--sidebar {
+  display: flex;
+  flex-direction: row;
+
+  .post-feed, .page-content {
+    width: 75%;
+    padding-right: 1.5em;
+  }
+}
+
+// Woocommerce - Start
+.single-product .cy-main--shop .product {
+  width: auto;
+  min-width: 400px;
+  display: flex;
+
+  .cy-product-summary {
+    flex: 1 1 auto;
+    .summary {
+      width: auto;
+      float: none;
+    }
+  }
+}
+
+.woocommerce-tabs {
+  display: inline-block;
+  width: 100%;
+}
+// Woocommerce - End
 
 @import "header";
 @import "footer";
